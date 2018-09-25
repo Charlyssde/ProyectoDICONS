@@ -1,0 +1,28 @@
+CU 001 - Administrar hardware
+	El jefe del centro de computo se encarga de visualizar, registrar, modificar y eliminar un elemento de hardware.
+CU 002 - Administrar software
+	El jefe del  centro de computo se encarga de visualiza, registrar, modificar y eliminar un elemento de software.
+CU 003 - Administrar usuarios
+	El jefe del centro de computo se encarga de visualizar, registrar, modificar y eliminar un usuario del sistema.
+CU 005 - Administrar responsables
+	El jefe del centro de computo lleva acabo un control de los docentes o administrativos que tienen a su cargo un equipo de computo de la institución.
+CU 006 - Asignar hardware include CU-001
+	El jefe del centro de computo seleciona un responsable registrado y le asigna un elemento de hardware.
+CU 007 - Generar inventario
+	El sistema genera un inventario con base al hardware registrado.
+CU 008 - Buscar hardware
+	El jefe del centro de computo realiza una busqueda de hardware por No. inventario, marca, modelo, No. de serie, ubicacion y/o responsable.
+CU 009 - Generar estadistica de mantenimiento
+	El sistema genera una estadistica respecto a los modelos de los equipos y las veces que han entrado en mantenimiento.
+CU 010 - Generar estadistica de adquisicion de hardware
+	El sistema genera una estadistica respecto a los nuevos elementos de hardware de forma semestral y anual.
+CU 011 - Generar estadistica de adquisicion de software
+	El sistema genera una estadistica respecto a los nuevos elementos de software de forma semestral y anual.
+CU 012 - Subir garantia extiende CU001
+	El jefe del centro de computo sube un archivo en PDF al sistema con el cual se refiere a la garantia de un equipo de hardware.
+CU 013 - Registrar licencia extiende CU002
+	El jefe del centro de computo sube un archivo en PDF al sistema con el cual se refiere a la licencia de un elemento de software.
+CU 014 - Registro de mantenimiento
+	El tecnico llena el formato destinado para el registro de mantenimiento de equipos de computo
+CU 015 - Generar reporte de fallas
+	El sistema genera un reporte de acuerdo a un registro de mantenimiento en especifico.
