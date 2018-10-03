@@ -5794,8 +5794,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -752,
-											"top": -512,
+											"left": -768,
+											"top": -528,
 											"height": 13
 										},
 										{
@@ -5805,8 +5805,8 @@
 												"$ref": "AAAAAAFl4/Z2wCRPq3o="
 											},
 											"font": "Arial;13;1",
-											"left": 245,
-											"top": 39,
+											"left": 237,
+											"top": 31,
 											"width": 951,
 											"height": 13,
 											"text": "DICONS"
@@ -5819,8 +5819,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -752,
-											"top": -512,
+											"left": -768,
+											"top": -528,
 											"width": 113.40087890625,
 											"height": 13,
 											"text": "(from DiagramaCU)"
@@ -5833,15 +5833,15 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -752,
-											"top": -512,
+											"left": -768,
+											"top": -528,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 240,
-									"top": 32,
+									"left": 232,
+									"top": 24,
 									"width": 961,
 									"height": 25,
 									"stereotypeLabel": {
@@ -5859,8 +5859,8 @@
 								}
 							],
 							"font": "Arial;13;0",
-							"left": 240,
-							"top": 32,
+							"left": 232,
+							"top": 24,
 							"width": 961,
 							"height": 1441,
 							"nameCompartment": {
@@ -7661,9 +7661,9 @@
 											"font": "Arial;13;1",
 											"left": 696.5,
 											"top": 1155.5,
-											"width": 159,
+											"width": 161,
 											"height": 13,
-											"text": "CU011- Registrar Licencia"
+											"text": "CU026- Registrar Licencia"
 										},
 										{
 											"_type": "LabelView",
@@ -7696,7 +7696,7 @@
 									"font": "Arial;13;0",
 									"left": 691.5,
 									"top": 1148.5,
-									"width": 170.4052734375,
+									"width": 171.12255859375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl5BN5BSahopw="
@@ -7796,7 +7796,7 @@
 							"containerChangeable": true,
 							"left": 656,
 							"top": 1144,
-							"width": 240,
+							"width": 242,
 							"height": 35,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl5BN5BSag/Nc="
@@ -7862,7 +7862,7 @@
 											"top": 1371.5,
 											"width": 137,
 											"height": 13,
-											"text": "CU012- Subir Garantia"
+											"text": "CU025- Subir Garantia"
 										},
 										{
 											"_type": "LabelView",
@@ -18962,7 +18962,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFl4/SBpyQbB/A="
 					},
-					"name": "CU011- Registrar Licencia",
+					"name": "CU026- Registrar Licencia",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
@@ -18998,7 +18998,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFl4/SBpyQbB/A="
 					},
-					"name": "CU012- Subir Garantia",
+					"name": "CU025- Subir Garantia",
 					"ownedElements": [
 						{
 							"_type": "UMLExtend",
