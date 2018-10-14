@@ -1652,7 +1652,7 @@
 											"top": 135,
 											"width": 109.8271484375,
 											"height": 13,
-											"text": "Personal"
+											"text": "Responsable"
 										},
 										{
 											"_type": "LabelView",
@@ -4738,8 +4738,8 @@
 								"$ref": "AAAAAAFl2WtdaZOdDSs="
 							},
 							"font": "Arial;13;0",
-							"left": 248,
-							"top": 760,
+							"left": 216,
+							"top": 616,
 							"width": 265,
 							"height": 65,
 							"text": "Tipos de dictamen: Inservible, Deshabilitado, Hbailitado, Obsoleto"
@@ -5404,7 +5404,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFl4/Ha0CQB984="
 					},
-					"name": "Personal",
+					"name": "Responsable",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
