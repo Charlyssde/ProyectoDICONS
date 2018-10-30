@@ -6966,7 +6966,7 @@
 											"top": 502,
 											"width": 687,
 											"height": 13,
-											"text": "Administración de Elementos"
+											"text": "Administración de Catalogos"
 										},
 										{
 											"_type": "LabelView",
@@ -11728,7 +11728,7 @@
 											"top": -2104,
 											"width": 206.62890625,
 											"height": 13,
-											"text": "(from Administración de Elementos)"
+											"text": "(from Administración de Catalogos)"
 										},
 										{
 											"_type": "LabelView",
@@ -12337,7 +12337,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFl4/SBpyQbB/A="
 					},
-					"name": "Administración de Elementos",
+					"name": "Administración de Catalogos",
 					"ownedElements": [
 						{
 							"_type": "UMLUseCase",
