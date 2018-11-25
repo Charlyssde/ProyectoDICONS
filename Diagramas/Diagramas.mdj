@@ -4234,7 +4234,7 @@
 										"$ref": "AAAAAAFl+G1lfEPvM/0="
 									},
 									"edgePosition": 2,
-									"text": "1..*"
+									"text": "1"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -5546,7 +5546,8 @@
 								"$ref": "AAAAAAFl2XVtg5P0jO4="
 							},
 							"name": "idUbicacion",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5643,7 +5644,7 @@
 								"reference": {
 									"$ref": "AAAAAAFl2XfpspQgyiA="
 								},
-								"multiplicity": "1..*"
+								"multiplicity": "1"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -5948,7 +5949,8 @@
 								"$ref": "AAAAAAFl2XgFm5RKV8A="
 							},
 							"name": "numInventario",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -5997,7 +5999,8 @@
 								"$ref": "AAAAAAFl2XgFm5RKV8A="
 							},
 							"name": "estado",
-							"visibility": "private"
+							"visibility": "private",
+							"type": ""
 						}
 					],
 					"operations": [
