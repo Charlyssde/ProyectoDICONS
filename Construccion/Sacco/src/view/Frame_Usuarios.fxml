@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Frame_UsuariosController">
+   <children>
+      <BorderPane layoutX="163.0" layoutY="93.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="50.0" prefWidth="200.0" style="-fx-background-color: #FFF176;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnBack" layoutX="8.0" layoutY="4.0" mnemonicParsing="false" onMouseClicked="#regresarPantalla" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../sources/icons/Icon_back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="746.0" layoutY="5.0">
+                     <image>
+                        <Image url="@../sources/icons/Icon_AccountBar.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="344.0" layoutY="17.0" text="Técnicos Académicos" underline="true" />
+                  <Label fx:id="lblJefeCc" alignment="BOTTOM_RIGHT" layoutX="506.0" layoutY="17.0" prefWidth="240.0" text="Nombre" />
+               </children></Pane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="tblTecnicos" layoutX="10.0" layoutY="67.0" prefHeight="280.0" prefWidth="766.0">
+                    <columns>
+                      <TableColumn fx:id="numPersonal" prefWidth="189.0" text="NUM. PERSONAL" />
+                      <TableColumn fx:id="nombre" prefWidth="200.0" text="NOMBRE" />
+                        <TableColumn fx:id="telefono" prefWidth="188.0" text="TELÉFONO" />
+                        <TableColumn fx:id="correo" prefWidth="188.0" text="CORREO " />
+                    </columns>
+                  </TableView>
+               </children></Pane>
+         </center>
+         <bottom>
+            <Pane prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnAgregar" layoutX="618.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#agregarTecnico" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../sources/icons/Icon_Agregar.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnEditar" disable="true" layoutX="684.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#editarTecnico" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../sources/icons/Icon_Edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="benEliminar" disable="true" layoutX="743.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#eliminarTecnico" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../sources/icons/Icon_Delete.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Label layoutX="622.0" layoutY="38.0" text="Agregar" />
+                  <Label layoutX="694.0" layoutY="38.0" text="Editar" />
+                  <Label layoutX="747.0" layoutY="38.0" text="Eliminar" />
+                  <Button fx:id="btnRefresh" layoutX="375.0" layoutY="2.0" mnemonicParsing="false" onMouseClicked="#actualizarDataTabla" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fitHeight="35.0" fitWidth="35.0">
+                           <image>
+                              <Image url="@../sources/icons/refresh.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="358.0" layoutY="37.0" text="Actualizar Tabla" />
+               </children></Pane>
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

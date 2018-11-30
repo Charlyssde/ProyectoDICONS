@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardTAController">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <Pane prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #A9B7DA;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="39.0" layoutY="14.0" text="EXIT" textFill="#a80d0d">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="360.0" layoutY="17.0" text="Administración" underline="true" />
+                  <Label fx:id="lblTa" alignment="BOTTOM_RIGHT" layoutX="505.0" layoutY="17.0" prefHeight="17.0" prefWidth="240.0" text="Nombre TA" />
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="746.0" layoutY="5.0">
+                     <image>
+                        <Image url="@../sources/icons/Icon_AccountBar.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="btnSalir" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#salirDashboard" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView fx:id="btnExit" accessibleRole="BUTTON" fitHeight="25.0" fitWidth="25.0">
+                           <image>
+                              <Image url="@../sources/icons/exit.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </top>
+         <center>
+            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="btnMantenimiento" layoutX="155.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#registrarMantenimiento" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView accessibleRole="BUTTON">
+                           <image>
+                              <Image url="@../sources/icons/Btn_Mantenimiento.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="btnReportes" disable="true" layoutX="495.0" layoutY="104.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+                     <graphic>
+                        <ImageView>
+                           <image>
+                              <Image url="@../sources/icons/Btn_Reportes.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>
