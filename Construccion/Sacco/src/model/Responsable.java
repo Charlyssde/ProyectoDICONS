@@ -10,31 +10,31 @@ package model;
  * @author texch
  */
 public class Responsable {
-  
+
   private String nombre;
-  
-  private String password;
+
+  private String numPersonal;
 
   private String telefono;
-  
-  private String extension;
-  
-  private String correoInstitucional;
 
-  public Responsable(String nombre, String password, String telefono, String extension, String correoInstitucional) {
+  private String extension;
+
+  private String correo;
+
+  public Responsable(String numPersonal, String nombre, String telefono, String extension, String correo) {
     this.nombre = nombre;
-    this.password = password;
+    this.numPersonal = numPersonal;
     this.telefono = telefono;
     this.extension = extension;
-    this.correoInstitucional = correoInstitucional;
+    this.correo = correo;
   }
 
   public String getNombre() {
     return nombre;
   }
 
-  public String getPassword() {
-    return password;
+  public String getNumPersonal() {
+    return numPersonal;
   }
 
   public String getTelefono() {
@@ -45,10 +45,8 @@ public class Responsable {
     return extension;
   }
 
-  public String getCorreoInstitucional() {
-    return correoInstitucional;
+  public String getCorreo() {
+    return correo;
   }
-  
-  
-  
+
 }

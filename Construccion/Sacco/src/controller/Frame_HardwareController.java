@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.messages.CancelarMessageController;
 import controller.popups.EditarHardwareController;
 import java.io.IOException;
 import java.net.URL;
@@ -25,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableView.TableViewSelectionModel;
 import javafx.scene.control.TextField;
@@ -70,7 +70,7 @@ public class Frame_HardwareController implements Initializable {
   @FXML
   private TableView<Hardware> tblHardware = new TableView<>();
   @FXML
-  private TableColumn<Area, String> colUbicacion;
+  private TableColumn<Hardware, String> colUbicacion;
   @FXML
   private TableColumn<Hardware, String> colNumInv;
   @FXML
@@ -83,9 +83,10 @@ public class Frame_HardwareController implements Initializable {
   private TableColumn<Hardware, String> colEstado;
   @FXML
   private Button btnRefreshTable;
-  
+
   private Hardware hardware;
-  
+
+  private Area area;
 
   /**
    * Initializes the controller class.
@@ -153,7 +154,6 @@ public class Frame_HardwareController implements Initializable {
   private void editarHardware(MouseEvent event) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/popups/editarHardware.fxml"));
-    Hardware hardware = new Hardware();
     try {
       Parent sc = loader.load();
       Scene nu = new Scene(sc);
@@ -171,11 +171,16 @@ public class Frame_HardwareController implements Initializable {
   }
 
   @FXML
-  private void eliminarHardware(MouseEvent event) {
+  private void eliminarHardware(MouseEvent event) throws SQLException {
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("/view/messages/EliminarMessage.fxml"));
     try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/EliminarMessage.fxml"));
+      Parent sc = loader.load();
       Scene nu = new Scene(sc);
       Stage stage = new Stage();
+      CancelarMessageController pantalla = loader.getController();
+      pantalla.vieneDe("Hardware");
+      pantalla.cargarObjeto(hardware);
       stage.setTitle("Eliminar");
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setResizable(false);
@@ -212,6 +217,8 @@ public class Frame_HardwareController implements Initializable {
     tblHardware.getItems().clear();
     ObservableList<Hardware> visibleList = (ObservableList<Hardware>) HardwareDAO.obtenerAllHardware();
     tblHardware.getItems().addAll(visibleList);
+    chbCriterio.setValue(null);
+    txtBuscar.clear();
   }
 
   private void mensaje(String mensaje) {
@@ -234,30 +241,30 @@ public class Frame_HardwareController implements Initializable {
         new PropertyValueFactory<Hardware, String>("estado"));
     colNoSerie.setCellValueFactory(
         new PropertyValueFactory<Hardware, String>("numSerie"));
+    colUbicacion.setCellValueFactory(
+        new PropertyValueFactory<Hardware, String>("ubicacion"));
   }
 
   private void cargarBox() {
     chbCriterio.setTooltip(new Tooltip("Selecciona un criterio para búsqueda"));
     chbCriterio.getItems().addAll("marca", "estado");
   }
-  
-  private void selected(){
-    tblHardware.getSelectionModel().selectedItemProperty().addListener(new ChangeListener(){
+
+  private void selected() {
+    tblHardware.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
       @Override
       public void changed(ObservableValue observable, Object oldValue, Object newValue) {
-        if(tblHardware.getSelectionModel().getSelectedItem() != null) {
-          TableViewSelectionModel selectionModel = tblHardware.getSelectionModel(); 
-          hardware = (Hardware)selectionModel.getSelectedItem();
-          System.out.println(hardware.getNumInventario());
-          
+        if (tblHardware.getSelectionModel().getSelectedItem() != null) {
+          TableViewSelectionModel selectionModel = tblHardware.getSelectionModel();
+          hardware = (Hardware) selectionModel.getSelectedItem();
           btnEditar.setDisable(false);
           btnEliminar.setDisable(false);
-        }else{
+        } else {
           btnEditar.setDisable(true);
           btnEliminar.setDisable(true);
-        } 
+        }
       }
-      
+
     });
   }
 }

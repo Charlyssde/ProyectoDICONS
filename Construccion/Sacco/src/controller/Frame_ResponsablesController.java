@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,7 +73,7 @@ public class Frame_ResponsablesController implements Initializable {
   public void initialize(URL url, ResourceBundle rb) {
     cargarBox();
     cargarColumnas();
-   /* try {
+    /* try {
       actualizarTabla();
     } catch (SQLException ex) {
       Logger.getLogger(Frame_HardwareController.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,6 +186,5 @@ public class Frame_ResponsablesController implements Initializable {
   private void cargarBox() {
     chbCriterio.getItems().addAll("Nombre");
   }
-
 
 }

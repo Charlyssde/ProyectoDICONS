@@ -21,23 +21,23 @@ import javafx.stage.Stage;
  */
 public class ExitoMessageController implements Initializable {
 
-    @FXML
-    private Button btnAceptar;
-    @FXML
-    private AnchorPane anchorPane;
+  @FXML
+  private Button btnAceptar;
+  @FXML
+  private AnchorPane anchorPane;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+  }
 
-    @FXML
-    private void aceptarOperacion(MouseEvent event) {
-      Stage stage = (Stage) anchorPane.getScene().getWindow(); 
-      stage.close(); 
-    }
-    
+  @FXML
+  private void aceptarOperacion(MouseEvent event) {
+    Stage stage = (Stage) anchorPane.getScene().getWindow();
+    stage.close();
+  }
+
 }

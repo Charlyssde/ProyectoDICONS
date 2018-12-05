@@ -33,60 +33,61 @@ import model.TecnicoAcademico;
  */
 public class LoginTAController implements Initializable {
 
-    @FXML
-    private Button btnIngresar;
-    @FXML
-    private Button btnBack;
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private TextField txtNumPersonal;
-    @FXML
-    private PasswordField txtPassword;
+  @FXML
+  private Button btnIngresar;
+  @FXML
+  private Button btnBack;
+  @FXML
+  private AnchorPane anchorPane;
+  @FXML
+  private TextField txtNumPersonal;
+  @FXML
+  private PasswordField txtPassword;
 
-    private TecnicoAcademico usuario = null;
+  private TecnicoAcademico usuario = null;
 
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  /**
+   * Initializes the controller class.
+   *
+   * @param url
+   * @param rb
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+  }
 
-    @FXML
-    private void ingresarDashboardTa(MouseEvent event) throws SQLException {
-      if(validarCampos()){
-          if(usuarioCorrecto()){
-              FXMLLoader loader = new FXMLLoader();
-              loader.setLocation(getClass().getResource("/view/DashboardTA.fxml"));
-              try {
-                loader.load();
-              } catch (IOException ex) {
-                Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-              }
-    //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
-              AnchorPane dashboardTa = loader.getRoot();
-              DashboardTAController dash = loader.getController();
-              dash.cargarUsuario(usuario.getNombre());
-              Scene newScene = new Scene(dashboardTa);
-              Stage curStage = (Stage) anchorPane.getScene().getWindow();
-              curStage.setScene(newScene);
-              curStage.setTitle("Dashboard Técnico Académico");
-              curStage.show();
-          }else{
-            mensajeError("Usuario Incorrecto");
-          }
-      }else{
-        mensajeError("Hay campos vacíos");
+  @FXML
+  private void ingresarDashboardTa(MouseEvent event) throws SQLException {
+    if (validarCampos()) {
+      if (usuarioCorrecto()) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/DashboardTA.fxml"));
+        try {
+          loader.load();
+        } catch (IOException ex) {
+          Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
+        AnchorPane dashboardTa = loader.getRoot();
+        DashboardTAController dash = loader.getController();
+        dash.cargarUsuario(usuario);
+        Scene newScene = new Scene(dashboardTa);
+        Stage curStage = (Stage) anchorPane.getScene().getWindow();
+        curStage.setScene(newScene);
+        curStage.setTitle("Dashboard Técnico Académico");
+        curStage.show();
+      } else {
+        mensajeError("Usuario Incorrecto");
       }
+    } else {
+      mensajeError("Hay campos vacíos");
     }
+  }
 
-    @FXML
-    private void regresarPantalla(MouseEvent event) {
-         FXMLLoader loader = new FXMLLoader();
+  @FXML
+  private void regresarPantalla(MouseEvent event) {
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/LoginPrincipal.fxml"));
     try {
       loader.load();
@@ -100,29 +101,30 @@ public class LoginTAController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("LogIn");
     curStage.show();
+  }
+
+  private boolean validarCampos() {
+    if (txtPassword.getText().equals("") || txtNumPersonal.getText().equals("")) {
+      return false;
     }
-    
-    private boolean validarCampos(){
-        if(txtPassword.getText().equals("") || txtNumPersonal.getText().equals("")){
-          return false;
-      }
+    return true;
+  }
+
+  private boolean usuarioCorrecto() throws SQLException {
+    TecnicoAcademico ta = new TecnicoAcademico(txtNumPersonal.getText(), txtPassword.getText());
+    usuario = TecnicoAcademicoDAO.obtenerTecnico(ta);
+    if (usuario != null) {
       return true;
     }
-    private boolean usuarioCorrecto() throws SQLException{
-        TecnicoAcademico ta = new TecnicoAcademico(txtNumPersonal.getText(),txtPassword.getText());
-        usuario = TecnicoAcademicoDAO.obtenerTecnico(ta);
-        if(usuario != null){
-            return true;
-        }
-        return false;
-    }
-    
-      private void mensajeError(String mensaje) {
-        Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-        dialogo.setTitle("Aviso");
-        dialogo.setHeaderText(null);
-        dialogo.setContentText(mensaje);
-        dialogo.initStyle(StageStyle.UTILITY);
-        dialogo.showAndWait();
+    return false;
+  }
+
+  private void mensajeError(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
   }
 }

@@ -31,7 +31,7 @@
             <Label accessibleRoleDescription=" " layoutX="160.0" layoutY="113.0" text="Buscar Responsable:" />
             <TextField fx:id="txtBuscar" layoutX="300.0" layoutY="109.0" prefHeight="25.0" prefWidth="221.0" promptText="Numero de Personal" />
             <Separator layoutY="150.0" prefHeight="17.0" prefWidth="800.0" />
-            <Button fx:id="btnSiguiente" alignment="CENTER" cacheShape="false" focusTraversable="false" layoutX="650.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#siguienteDictamen" prefHeight="25.0" prefWidth="90.0" scaleShape="false" style="-fx-background-color: #6CA3E4;" text="Siguiente">
+            <Button fx:id="btnSiguiente" alignment="CENTER" cacheShape="false" disable="true" focusTraversable="false" layoutX="650.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#siguienteDictamen" prefHeight="25.0" prefWidth="90.0" scaleShape="false" style="-fx-background-color: #6CA3E4;" text="Siguiente">
                <effect>
                   <ColorAdjust saturation="-0.45" />
                </effect>
@@ -48,7 +48,7 @@
                </effect>
             </Button>
             <Label layoutX="136.0" layoutY="198.0" text="Nombre:" />
-            <TextField fx:id="txtNombre" layoutX="136.0" layoutY="215.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;" />
+            <TextField fx:id="txtNombre" editable="false" layoutX="136.0" layoutY="215.0" prefHeight="25.0" prefWidth="300.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;" />
             <Label fx:id="lblDate" alignment="BOTTOM_RIGHT" layoutX="652.0" layoutY="25.0" prefHeight="17.0" prefWidth="121.0" text="Fecha del Dictamen" />
             <Label alignment="BOTTOM_RIGHT" layoutX="652.0" layoutY="55.0" prefHeight="17.0" prefWidth="121.0" text="Región: Xalapa" />
             <Label layoutX="332.0" layoutY="15.0" text="DICTAMEN TÉCNICO" underline="true">

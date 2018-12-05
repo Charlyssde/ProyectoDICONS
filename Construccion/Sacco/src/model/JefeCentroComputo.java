@@ -10,26 +10,26 @@ package model;
  * @author texch
  */
 public class JefeCentroComputo {
+
   private String numPersonal;
-  
+
   private String nombre;
-  
+
   private String password;
 
-    public JefeCentroComputo(String text, String text0) {
-      this.numPersonal = text;
-      this.password = text0;
-    }
-  
-    public JefeCentroComputo(String numPersonal, String nombre, String password) {
-      this.numPersonal = numPersonal;
-      this.nombre = nombre;
-      this.password = password;
-    }
+  public JefeCentroComputo(String text, String text0) {
+    this.numPersonal = text;
+    this.password = text0;
+  }
+
+  public JefeCentroComputo(String numPersonal, String nombre, String password) {
+    this.numPersonal = numPersonal;
+    this.nombre = nombre;
+    this.password = password;
+  }
 
   public JefeCentroComputo() {
   }
-  
 
   public String getNumPersonal() {
     return numPersonal;
@@ -38,11 +38,9 @@ public class JefeCentroComputo {
   public String getNombre() {
     return nombre;
   }
-  
+
   public String getPassword() {
     return password;
   }
-  
-  
-    
+
 }

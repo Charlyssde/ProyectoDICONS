@@ -46,13 +46,13 @@
                <children>
                   <TableView fx:id="tblSoftware" layoutX="10.0" layoutY="67.0" prefHeight="280.0" prefWidth="776.0" style="-fx-border-color: #000000;">
                     <columns>
-                      <TableColumn fx:id="colSoftware" prefWidth="249.0" resizable="false" style="-fx-background-color: #80DEEA;" text="SOFTWARE" />
-                      <TableColumn fx:id="colNumLicencias" minWidth="0.0" prefWidth="114.0" resizable="false" style="-fx-background-color: #80DEEA;" text="NUM. LICENCIAS" />
-                        <TableColumn fx:id="colVersion" prefWidth="92.0" resizable="false" style="-fx-background-color: #80DEEA;" text="VERSIÓN" />
-                        <TableColumn fx:id="colObservaciones" prefWidth="319.0" resizable="false" style="-fx-background-color: #80DEEA;" text="OBSERVACIONES" />
+                      <TableColumn fx:id="colSoftware" prefWidth="249.0" resizable="false" text="SOFTWARE" />
+                      <TableColumn fx:id="colNumLicencias" minWidth="0.0" prefWidth="114.0" resizable="false" text="NUM. LICENCIAS" />
+                        <TableColumn fx:id="colVersion" prefWidth="92.0" resizable="false" text="VERSIÓN" />
+                        <TableColumn fx:id="colObservaciones" prefWidth="319.0" resizable="false" text="OBSERVACIONES" />
                     </columns>
                   </TableView>
-                  <TextField layoutX="558.0" layoutY="24.0" prefWidth="160.0" promptText="Buscar" />
+                  <TextField fx:id="txtBuscar" layoutX="558.0" layoutY="24.0" prefWidth="160.0" promptText="Buscar" />
                   <ChoiceBox fx:id="chbCriterio" accessibleText="Criterios" layoutX="400.0" layoutY="24.0" prefWidth="150.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />

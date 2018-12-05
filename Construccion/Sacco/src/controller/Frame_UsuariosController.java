@@ -55,15 +55,16 @@ public class Frame_UsuariosController implements Initializable {
   private TableColumn<TecnicoAcademico, String> telefono;
   @FXML
   private TableColumn<TecnicoAcademico, String> correo;
-  
+
   private TecnicoAcademico tecnico;
 
-    /**
-     * Initializes the controller class.
+  /**
+   * Initializes the controller class.
+   *
    * @param url
    * @param rb
-     */
-    @Override
+   */
+  @Override
   public void initialize(URL url, ResourceBundle rb) {
     cargarColumnas();
     actualizarTabla();

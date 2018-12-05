@@ -6,13 +6,19 @@
 package controller.messages;
 
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.DAO.HardwareDAO;
+import model.DAO.SoftwareDAO;
+import model.Hardware;
 import model.Software;
 
 /**
@@ -22,44 +28,72 @@ import model.Software;
  */
 public class CancelarMessageController implements Initializable {
 
-    @FXML
-    private Button btnEliminar;
-    @FXML
-    private Button btnCancelar;
-    @FXML
-    private AnchorPane anchorPane;
-    
-    private boolean decision;
+  @FXML
+  private Button btnEliminar;
+  @FXML
+  private Button btnCancelar;
+  @FXML
+  private AnchorPane anchorPane;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  private Object eliminar;
 
-    @FXML
-    private void eliminarElemento(MouseEvent event) {
-      decision = true;
-      
-    }
+  private String origen;
 
-    @FXML
-    private void cancelarEliminacion(MouseEvent event) {
-      decision = false;
-      Stage stage = (Stage) anchorPane.getScene().getWindow(); 
-      stage.close(); 
-    }
-    
-    public boolean saberDecision(){
-        return decision;
-    }
-
-  public void cargarSoftware(Software software) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
   }
 
+  @FXML
+  private void eliminarElemento(MouseEvent event) throws SQLException {
+    switch (origen) {
+      case "Software":
+        SoftwareDAO.eliminarSoftware((Software) eliminar);
+        break;
+      case "Hardware":
+        HardwareDAO.eliminarHardware((Hardware) eliminar);
+        break;
+      case "Responsable":
+        break;
+      case "Tecnico":
+        break;
+      default:
+        break;
+    }
+    mensaje("Eliminacion realizada exitosamente");
+    Stage stage = (Stage) anchorPane.getScene().getWindow();
+    stage.close();
+  }
 
-    
+  @FXML
+  private void cancelarEliminacion(MouseEvent event) {
+    Stage stage = (Stage) anchorPane.getScene().getWindow();
+    stage.close();
+  }
+
+  public void cargarObjeto(Object objeto) throws SQLException {
+    System.out.println(objeto.getClass().toString());
+    if (objeto.getClass().toString().equals("class model.Hardware")) {
+      eliminar = (Hardware) objeto;
+    } else if (objeto.getClass().toString().equals("class model.Software")) {
+      eliminar = (Software) objeto;
+    }
+  }
+
+  public void vieneDe(String origen) {
+    this.origen = origen;
+  }
+
+  public void mensaje(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
+  }
+
 }

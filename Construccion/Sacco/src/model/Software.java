@@ -5,37 +5,40 @@
  */
 package model;
 
-import java.util.Date;
+import java.sql.Date;
 
 /**
  *
  * @author texch
  */
 public class Software {
-  private String numInventario;
-  
-  private String nombre;
-  
-  private Integer numLicencias;
-  
-  private String observaciones;
-  
-  private Date fechaAdquisicion;
-  
 
-  public Software(String numInventario, String nombre, Integer numLicencias, String observaciones,
-      Date fechaAdquisicion) {
+  private Integer numInventario;
+
+  private String nombre;
+
+  private Integer numLicencias;
+
+  private String observaciones;
+
+  private Date fechaAdquisicion;
+
+  private String version;
+
+  public Software(Integer numInventario, String nombre, int numLicencias,
+      Date fechaAdquisicion, String version, String observaciones) {
     this.numInventario = numInventario;
     this.nombre = nombre;
     this.numLicencias = numLicencias;
     this.observaciones = observaciones;
     this.fechaAdquisicion = fechaAdquisicion;
+    this.version = version;
   }
 
   public Software() {
   }
 
-  public String getNumInventario() {
+  public Integer getNumInventario() {
     return numInventario;
   }
 
@@ -54,8 +57,9 @@ public class Software {
   public Date getFechaAdquisicion() {
     return fechaAdquisicion;
   }
-  
-  
-  
-    
+
+  public String getVersion() {
+    return version;
+  }
+
 }

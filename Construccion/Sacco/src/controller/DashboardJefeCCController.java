@@ -27,38 +27,38 @@ import javafx.stage.Stage;
  */
 public class DashboardJefeCCController implements Initializable {
 
-    @FXML
-    private Label lblJefeCc;
-    @FXML
-    private Button btnResguardos;
-    @FXML
-    private Button btnHardware;
-    @FXML
-    private Button btnSoftware;
-    @FXML
-    private Button btnReportes;
-    @FXML
-    private Button btnEstadisticas;
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private Button btnSalir;
-    @FXML
-    private Button btnResponsables;
-    @FXML
-    private Button btnTecnicos;
+  @FXML
+  private Label lblJefeCc;
+  @FXML
+  private Button btnResguardos;
+  @FXML
+  private Button btnHardware;
+  @FXML
+  private Button btnSoftware;
+  @FXML
+  private Button btnReportes;
+  @FXML
+  private Button btnEstadisticas;
+  @FXML
+  private AnchorPane anchorPane;
+  @FXML
+  private Button btnSalir;
+  @FXML
+  private Button btnResponsables;
+  @FXML
+  private Button btnTecnicos;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-     
-    }    
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
 
-    @FXML
-    private void salirDashboard(MouseEvent event) {
-      FXMLLoader loader = new FXMLLoader();
+  }
+
+  @FXML
+  private void salirDashboard(MouseEvent event) {
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/LoginPrincipal.fxml"));
     try {
       loader.load();
@@ -72,15 +72,15 @@ public class DashboardJefeCCController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("LogIn");
     curStage.show();
-    }
+  }
 
-    void cargarUsuario(String nombre) {
-      lblJefeCc.setText(nombre);
+  void cargarUsuario(String nombre) {
+    lblJefeCc.setText(nombre);
     //To change body of generated methods, choose Tools | Templates.
-    }
+  }
 
-    @FXML
-    private void administrarHardware(MouseEvent event) {
+  @FXML
+  private void administrarHardware(MouseEvent event) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/Frame_Hardware.fxml"));
     try {
@@ -97,11 +97,11 @@ public class DashboardJefeCCController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("Administración de Hardware");
     curStage.show();
-    }
+  }
 
-    @FXML
-    private void administrarSoftware(MouseEvent event) {  
-      FXMLLoader loader = new FXMLLoader();
+  @FXML
+  private void administrarSoftware(MouseEvent event) {
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/Frame_Software.fxml"));
     try {
       loader.load();
@@ -117,11 +117,11 @@ public class DashboardJefeCCController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("Administración de Software");
     curStage.show();
-    }
+  }
 
-    @FXML
-    private void administrarResponsables(MouseEvent event) {
-      FXMLLoader loader = new FXMLLoader();
+  @FXML
+  private void administrarResponsables(MouseEvent event) {
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/Frame_Responsables.fxml"));
     try {
       loader.load();
@@ -137,11 +137,11 @@ public class DashboardJefeCCController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("Administración de Responsables");
     curStage.show();
-    }
+  }
 
-    @FXML
-    private void administrarTecnicosAcademicos(MouseEvent event) {
-      FXMLLoader loader = new FXMLLoader();
+  @FXML
+  private void administrarTecnicosAcademicos(MouseEvent event) {
+    FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/Frame_Usuarios.fxml"));
     try {
       loader.load();
@@ -157,6 +157,6 @@ public class DashboardJefeCCController implements Initializable {
     curStage.setScene(newScene);
     curStage.setTitle("Administración de Técnicos");
     curStage.show();
-    }
-    
+  }
+
 }

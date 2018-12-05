@@ -10,16 +10,17 @@ package model;
  * @author texch
  */
 public class TecnicoAcademico {
+
   private String numPersonal;
-  
+
   private String nombre;
-  
+
   private String password;
 
   private String telefono;
-  
+
   private String extension;
-  
+
   private String correoInstitucional;
 
   public TecnicoAcademico(String numPersonal, String nombre, String password, String telefono, String extension, String correoInstitucional) {
@@ -36,11 +37,10 @@ public class TecnicoAcademico {
     this.password = password;
   }
 
-  
-    public TecnicoAcademico(){
-       
-    }
-  
+  public TecnicoAcademico() {
+
+  }
+
   public String getNumPersonal() {
     return numPersonal;
   }
@@ -48,23 +48,21 @@ public class TecnicoAcademico {
   public String getNombre() {
     return nombre;
   }
-  
+
   public String getPassword() {
     return password;
   }
 
-    public String getTelefono() {
-        return telefono;
-    }
+  public String getTelefono() {
+    return telefono;
+  }
 
-    public String getExtension() {
-        return extension;
-    }
+  public String getExtension() {
+    return extension;
+  }
 
-    public String getCorreoInstitucional() {
-        return correoInstitucional;
-    }
-  
-  
-    
+  public String getCorreoInstitucional() {
+    return correoInstitucional;
+  }
+
 }

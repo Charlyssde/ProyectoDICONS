@@ -27,43 +27,42 @@ import javafx.stage.Stage;
  */
 public class AgregarResponsableController implements Initializable {
 
-    @FXML
-    private AnchorPane anchorPane;
-    @FXML
-    private TextField txtNumPersonal;
-    @FXML
-    private TextField txtNombre;
-    @FXML
-    private TextField txtDireccion;
-    @FXML
-    private TextField txtTelefono;
-    @FXML
-    private TextField txtExtension;
-    @FXML
-    private TextField txtCorreo;
-    @FXML
-    private Button btnGuardar;
-    @FXML
-    private Button btnCancelar;
+  @FXML
+  private AnchorPane anchorPane;
+  @FXML
+  private TextField txtNumPersonal;
+  @FXML
+  private TextField txtNombre;
+  @FXML
+  private TextField txtDireccion;
+  @FXML
+  private TextField txtTelefono;
+  @FXML
+  private TextField txtExtension;
+  @FXML
+  private TextField txtCorreo;
+  @FXML
+  private Button btnGuardar;
+  @FXML
+  private Button btnCancelar;
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+  /**
+   * Initializes the controller class.
+   */
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+    // TODO
+  }
 
+  @FXML
+  private void cancelarRegistro(MouseEvent event) {
+    Stage stage = (Stage) anchorPane.getScene().getWindow();
+    stage.close();
+  }
 
-    @FXML
-    private void cancelarRegistro(MouseEvent event) {
-      Stage stage = (Stage) anchorPane.getScene().getWindow(); 
-      stage.close(); 
-    }
-
-    @FXML
-    private void guardarResponsable(MouseEvent event) {
-      try {
+  @FXML
+  private void guardarResponsable(MouseEvent event) {
+    try {
       Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/ExitoMessage.fxml"));
       Scene nu = new Scene(sc);
       Stage stage = new Stage();
@@ -72,11 +71,11 @@ public class AgregarResponsableController implements Initializable {
       stage.setResizable(false);
       stage.setScene(nu);
       stage.show();
-      Stage thisStage = (Stage)anchorPane.getScene().getWindow();
+      Stage thisStage = (Stage) anchorPane.getScene().getWindow();
       thisStage.close();
     } catch (IOException e) {
       e.printStackTrace();
     }
-    }
-    
+  }
+
 }

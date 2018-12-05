@@ -28,8 +28,8 @@
                   </ImageView>
                   <Label layoutX="114.0" layoutY="76.0" text="Numero de personal:" />
                   <Label layoutX="163.0" layoutY="129.0" text="Contraseña:" />
-                  <PasswordField fx:id="txtPassword" layoutX="251.0" layoutY="125.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;" />
                   <TextField fx:id="txtNumPersonal" layoutX="251.0" layoutY="72.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0  1 0;" />
+                  <PasswordField fx:id="txtPassword" layoutX="251.0" layoutY="125.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;" />
                   <Label layoutX="8.0" layoutY="175.0" text="Jefe del Centro de Cómputo" />
                   <Button fx:id="btnIngresar" layoutX="339.0" layoutY="171.0" mnemonicParsing="false" onMouseClicked="#ingresarDashboardJefeCc" style="-fx-background-color: #A9DABD;" text="Ingresar">
                      <cursor>

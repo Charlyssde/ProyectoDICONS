@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="470.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controller.Frame_Dictamen_DictamenController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="470.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Frame_Dictamen_DictamenController">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -30,7 +29,7 @@
             <Label layoutX="220.0" layoutY="128.0" text="Tipo de dictamen:" />
             <Label layoutX="14.0" layoutY="174.0" text="Descripción:" />
             <TextArea fx:id="txtDescripcion" layoutX="14.0" layoutY="191.0" prefHeight="200.0" prefWidth="775.0" />
-            <Button fx:id="btnGuardar" alignment="CENTER" cacheShape="false" focusTraversable="false" layoutX="674.0" layoutY="421.0" mnemonicParsing="false" onMouseClicked="#siguienteDictamen" prefHeight="25.0" prefWidth="90.0" scaleShape="false" style="-fx-background-color: #6CA3E4;" text="Guardar">
+            <Button fx:id="btnGuardar" alignment="CENTER" cacheShape="false" disable="true" focusTraversable="false" layoutX="674.0" layoutY="421.0" mnemonicParsing="false" onMouseClicked="#siguienteDictamen" prefHeight="25.0" prefWidth="90.0" scaleShape="false" style="-fx-background-color: #6CA3E4;" text="Guardar">
                <effect>
                   <ColorAdjust saturation="-0.45" />
                </effect>

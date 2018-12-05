@@ -11,16 +11,25 @@ package model;
  */
 public class Area {
 
-  private String idUbicacion;
-  
+  private Integer idUbicacion;
+
   private String edificio;
-  
+
   private String uso;
-  
+
+  private String show;
+
   public Area() {
   }
 
-  public String getIdUbicacion() {
+  public Area(Integer idUbicacion, String edificio, String uso) {
+    this.idUbicacion = idUbicacion;
+    this.edificio = edificio;
+    this.uso = uso;
+    this.show = edificio + " - " + uso;
+  }
+
+  public Integer getIdUbicacion() {
     return idUbicacion;
   }
 
@@ -31,6 +40,9 @@ public class Area {
   public String getUso() {
     return uso;
   }
-  
-  
+
+  @Override
+  public String toString() {
+    return show;
+  }
 }

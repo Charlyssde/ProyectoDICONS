@@ -1,4 +1,3 @@
-
 package controller;
 
 import controller.messages.CancelarMessageController;
@@ -9,6 +8,8 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,6 +22,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TableView.TableViewSelectionModel;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -68,12 +71,14 @@ public class Frame_SoftwareController implements Initializable {
   private Label lblJefeCc;
   @FXML
   private Button btnRefresh;
-  
-  private Software software;
 
-    /**
-     * Initializes the controller class.
-     */
+  private Software software;
+  @FXML
+  private TextField txtBuscar;
+
+  /**
+   * Initializes the controller class.
+   */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
     cargarBox();
@@ -83,9 +88,10 @@ public class Frame_SoftwareController implements Initializable {
     } catch (SQLException ex) {
       Logger.getLogger(Frame_HardwareController.class.getName()).log(Level.SEVERE, null, ex);
     }
+    selected();
   }
 
-    @FXML
+  @FXML
   private void agregarSoftware(MouseEvent event) {
     try {
       Parent sc = FXMLLoader.load(getClass().getResource("/view/popups/agregarSoftware.fxml"));
@@ -101,8 +107,7 @@ public class Frame_SoftwareController implements Initializable {
     }
   }
 
-
-   @FXML
+  @FXML
   private void editarSoftware(MouseEvent event) {
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/popups/editarSoftware.fxml"));
@@ -123,15 +128,16 @@ public class Frame_SoftwareController implements Initializable {
   }
 
   @FXML
-  private void eliminarElemento(MouseEvent event) {
+  private void eliminarElemento(MouseEvent event) throws SQLException {
     FXMLLoader loader = new FXMLLoader();
-    loader.setLocation(getClass().getResource("/view/messages/CancelarMessage.fxml"));
+    loader.setLocation(getClass().getResource("/view/messages/EliminarMessage.fxml"));
     try {
       Parent sc = loader.load();
       Scene nu = new Scene(sc);
       Stage stage = new Stage();
       CancelarMessageController pantalla = loader.getController();
-      pantalla.cargarSoftware(software);
+      pantalla.vieneDe("Software");
+      pantalla.cargarObjeto(software);
       stage.setTitle("Eliminar");
       stage.initModality(Modality.APPLICATION_MODAL);
       stage.setResizable(false);
@@ -168,7 +174,15 @@ public class Frame_SoftwareController implements Initializable {
   }
 
   @FXML
-  private void buscarPorCriterio(MouseEvent event) {
+  private void buscarPorCriterio(MouseEvent event) throws SQLException {
+    if (txtBuscar.getText().isEmpty() || chbCriterio.getValue() == null) {
+      mensaje("Debes seleccionar un criterio y un filtro para realizar la busqueda");
+    } else {
+      tblSoftware.getItems().clear();
+      ObservableList<Software> lista
+          = (ObservableList<Software>) SoftwareDAO.obtenerSoftwareNombre(txtBuscar.getText());
+      tblSoftware.getItems().addAll(lista);
+    }
   }
 
   public void cargarUsuario(String nombre) {
@@ -210,5 +224,23 @@ public class Frame_SoftwareController implements Initializable {
     colObservaciones.setCellValueFactory(
         new PropertyValueFactory<Software, String>("observaciones"));
 
+  }
+
+  private void selected() {
+    tblSoftware.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+      @Override
+      public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+        if (tblSoftware.getSelectionModel().getSelectedItem() != null) {
+          TableViewSelectionModel selectionModel = tblSoftware.getSelectionModel();
+          software = (Software) selectionModel.getSelectedItem();
+          btnEditar.setDisable(false);
+          btnEliminar.setDisable(false);
+        } else {
+          btnEditar.setDisable(true);
+          btnEliminar.setDisable(true);
+        }
+      }
+
+    });
   }
 }

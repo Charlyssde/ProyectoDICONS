@@ -10,34 +10,37 @@ package model;
  * @author texch
  */
 public class Hardware {
-  
-  private String numInventario;
-  
+
+  private Integer numInventario;
+
   private String marca;
 
   private String modelo;
-  
+
   private String numSerie;
-  
+
   private Area ubicacion;
-  
+
   private String estado;
-  
+
   private String tipo;
-  
+
   public Hardware() {
   }
 
-  public Hardware(String numInventario, String marca, String modelo, String numSerie, Area ubicacion, String estado) {
+  public Hardware(Integer numInventario, String marca, String modelo, String numSerie,
+      String estado, String tipo, Area ubicacion) {
     this.numInventario = numInventario;
     this.marca = marca;
     this.modelo = modelo;
     this.numSerie = numSerie;
     this.ubicacion = ubicacion;
     this.estado = estado;
+    this.tipo = tipo;
   }
 
-  public Hardware(String numInventario, String marca, String modelo, String numSerie, String estado, String tipo) {
+  public Hardware(Integer numInventario, String marca, String modelo, String numSerie,
+      String estado, String tipo) {
     this.numInventario = numInventario;
     this.marca = marca;
     this.modelo = modelo;
@@ -46,7 +49,7 @@ public class Hardware {
     this.tipo = tipo;
   }
 
-  public String getNumInventario() {
+  public Integer getNumInventario() {
     return numInventario;
   }
 
@@ -65,12 +68,22 @@ public class Hardware {
   public Area getUbicacion() {
     return ubicacion;
   }
-    
-  public String getEstado (){
+
+  public String getEstado() {
     return estado;
   }
-  
-  public String getTipo(){
+
+  public String getTipo() {
     return tipo;
   }
+
+  public void setUbicacion(Area area) {
+    this.ubicacion = area;
+  }
+
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
+  
+  
 }

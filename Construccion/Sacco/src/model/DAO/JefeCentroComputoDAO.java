@@ -20,33 +20,33 @@ import java.util.logging.Logger;
  * @author texch
  */
 public class JefeCentroComputoDAO {
-    
-  public static JefeCentroComputo obtenerJefeCc(JefeCentroComputo datos) throws SQLException{
-      Connection conexion = null;
-      JefeCentroComputo jcc = null;
-      try {
-          conexion = ConnectionToDb.conectar("root","2580","sacco","localhost");
-          PreparedStatement st;
-          st = conexion.prepareStatement("select * from jefecentrocomputo where numPersonal = ? and password = ?");
-          st.setString(1, datos.getNumPersonal());
-          st.setString(2, datos.getPassword());
-          ResultSet resultadoQuery = st.executeQuery();
 
-          if(resultadoQuery.next()){
-            String numP = resultadoQuery.getString("numPersonal");
-	   String nom = (resultadoQuery.getString("nombre"));
-            String pass = (resultadoQuery.getString("password"));				
-            jcc = new JefeCentroComputo(numP, nom, pass);
-          }        
-      } catch (SQLException ex) {
-          Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE, null, ex);
-      } finally{
-          if(conexion != null){
-              conexion.close();
-          }
+  public static JefeCentroComputo obtenerJefeCc(JefeCentroComputo datos) throws SQLException {
+    Connection conexion = null;
+    JefeCentroComputo jcc = null;
+    try {
+      conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
+      PreparedStatement st;
+      st = conexion.prepareStatement("select * from jefecentrocomputo where numPersonal = ? and password = ?");
+      st.setString(1, datos.getNumPersonal());
+      st.setString(2, datos.getPassword());
+      ResultSet resultadoQuery = st.executeQuery();
+
+      if (resultadoQuery.next()) {
+        String numP = resultadoQuery.getString("numPersonal");
+        String nom = (resultadoQuery.getString("nombre"));
+        String pass = (resultadoQuery.getString("password"));
+        jcc = new JefeCentroComputo(numP, nom, pass);
       }
-      return jcc;
-      
+    } catch (SQLException ex) {
+      Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+      if (conexion != null) {
+        conexion.close();
+      }
+    }
+    return jcc;
+
   }
-    
+
 }
