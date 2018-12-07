@@ -95,7 +95,7 @@ public class AgregarTecnicoController implements Initializable {
       guardarEnBd(tecnico);
       Stage stage = (Stage) anchorPane.getScene().getWindow();
       stage.close();
-      mensajeExito("Hardware guardado con exito en la base de datos");
+      mensajeExito("Tecnico guardado con exito en la base de datos");
     } else {
       mensajeExito("Todos los campos deben estar llenos");
     }

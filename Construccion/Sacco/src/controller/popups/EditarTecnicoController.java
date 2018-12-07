@@ -89,14 +89,20 @@ public class EditarTecnicoController implements Initializable {
 
   @FXML
   private void habilitarShowPass(KeyEvent event) {
+    lblShowPass.setVisible(true);
   }
 
   @FXML
   private void hidePassword(MouseEvent event) {
+    txtPasswordShowing.setVisible(false);
+    txtPassword.setVisible(true);
   }
 
   @FXML
   private void mostrarPassword(MouseEvent event) {
+    txtPasswordShowing.setVisible(true);
+    txtPassword.setVisible(false);
+    txtPasswordShowing.setText(txtPassword.getText());
   }
 
 }
