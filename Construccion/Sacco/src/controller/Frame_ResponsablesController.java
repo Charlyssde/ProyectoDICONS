@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -174,12 +175,12 @@ public class Frame_ResponsablesController implements Initializable {
         new PropertyValueFactory<Responsable, String>("nombre"));
   }
 
-  public void actualizarTabla() {
+  public void actualizarTabla() throws SQLException {
     ResponsableDAO.obtenerAllResponsable();
   }
 
   @FXML
-  private void buscarPorCriterio(MouseEvent event) {
+  private void buscarPorCriterio(MouseEvent event) throws SQLException {
     ResponsableDAO.obtenerResponsableNombre(txtBuscar.getText());
   }
 
