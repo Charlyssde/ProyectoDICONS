@@ -21,9 +21,8 @@
                </opaqueInsets>
             </TextField>
             <Label layoutX="15.0" layoutY="125.0" text="Nombre Completo:" />
-            <Label layoutX="15.0" layoutY="200.0" text="Dirección:" />
-            <Label layoutX="15.0" layoutY="275.0" text="Teléfono:" />
-            <Label layoutX="200.0" layoutY="275.0" text="Extensión:" />
+            <Label layoutX="15.0" layoutY="203.0" text="Teléfono:" />
+            <Label layoutX="15.0" layoutY="267.0" text="Extensión:" />
             <Label layoutX="15.0" layoutY="350.0" text="Correo Institucional:" />
             <Label layoutX="134.0" layoutY="4.0" text="Nuevo Responsable" underline="true">
                <font>
@@ -36,17 +35,12 @@
                   <Insets bottom="5.0" />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="txtDireccion" focusTraversable="false" layoutX="15.0" layoutY="217.0" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
+            <TextField fx:id="txtTelefono" focusTraversable="false" layoutX="14.0" layoutY="220.0" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                <opaqueInsets>
                   <Insets bottom="5.0" />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="txtTelefono" focusTraversable="false" layoutX="15.0" layoutY="292.0" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
-               <opaqueInsets>
-                  <Insets bottom="5.0" />
-               </opaqueInsets>
-            </TextField>
-            <TextField fx:id="txtExtension" focusTraversable="false" layoutX="200.0" layoutY="292.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
+            <TextField fx:id="txtExtension" focusTraversable="false" layoutX="15.0" layoutY="284.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                <opaqueInsets>
                   <Insets bottom="5.0" />
                </opaqueInsets>

@@ -104,11 +104,11 @@
                <children>
                   <TableView fx:id="tblResponsables" layoutX="10.0" layoutY="67.0" prefHeight="280.0" prefWidth="766.0">
                     <columns>
-                      <TableColumn fx:id="numPersonal" prefWidth="150.0" resizable="false" style="-fx-background-color: #FCC381;" text="NUM. PERSONAL" />
-                      <TableColumn fx:id="nombre" prefWidth="211.0" resizable="false" style="-fx-background-color: #FCC381;" text="NOMBRE" />
-                        <TableColumn fx:id="correo" prefWidth="147.0" resizable="false" style="-fx-background-color: #FCC381;" text="CORREO" />
-                        <TableColumn fx:id="telefono" prefWidth="109.0" resizable="false" style="-fx-background-color: #FCC381;" text="TELÉFONO" />
-                        <TableColumn fx:id="direccion" prefWidth="148.0" style="-fx-background-color: #FCC381;" text="DIRECCIÓN" />
+                      <TableColumn fx:id="numPersonal" prefWidth="150.0" resizable="false" text="NUM. PERSONAL" />
+                      <TableColumn fx:id="nombre" prefWidth="211.0" resizable="false" text="NOMBRE" />
+                        <TableColumn fx:id="correo" prefWidth="147.0" resizable="false" text="CORREO" />
+                        <TableColumn fx:id="telefono" prefWidth="109.0" resizable="false" text="TELÉFONO" />
+                        <TableColumn fx:id="direccion" prefWidth="148.0" text="DIRECCIÓN" />
                     </columns>
                   </TableView>
                   <TextField fx:id="txtBuscar" layoutX="562.0" layoutY="27.0" prefWidth="160.0" promptText="Buscar" />

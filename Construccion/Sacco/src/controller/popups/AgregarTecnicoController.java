@@ -89,27 +89,29 @@ public class AgregarTecnicoController implements Initializable {
 
   @FXML
   private void guardarTecnico(MouseEvent event) throws SQLException {
-    if (validarCampos()) {
+    if (!camposVacios()) {
       tecnico = new TecnicoAcademico(txtNumPersonal.getText(), txtNombre.getText(),
-          txtPassword.getText(), txtTelefono.getText(), txtExtension.getText(), txtCorreo.getText());
+          txtPassword.getText(), txtTelefono.getText(), txtExtension.getText(), 
+          txtCorreo.getText() + "@uv.mx");
       guardarEnBd(tecnico);
       Stage stage = (Stage) anchorPane.getScene().getWindow();
       stage.close();
-      mensajeExito("Tecnico guardado con exito en la base de datos");
+      mensaje("Hardware guardado con exito en la base de datos");
     } else {
-      mensajeExito("Todos los campos deben estar llenos");
+      mensaje("Todos los campos deben estar llenos");
     }
   }
 
-  private boolean validarCampos() {
-    if (txtNumPersonal.equals("") || txtNombre.equals("") || txtTelefono.equals("")
-        || txtCorreo.equals("") || txtExtension.equals("") || txtPassword.equals("")) {
-      return false;
+  private boolean camposVacios() {
+    if (txtNumPersonal.getText().isEmpty() || txtNombre.getText().isEmpty() || 
+        txtTelefono.getText().isEmpty() || txtCorreo.getText().isEmpty() || 
+        txtExtension.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+      return true;
     }
-    return true;
+    return false;
   }
 
-  private void mensajeExito(String mensaje) {
+  private void mensaje(String mensaje) {
     Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
     dialogo.setTitle("Aviso");
     dialogo.setHeaderText(null);

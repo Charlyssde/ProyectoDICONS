@@ -187,6 +187,20 @@ DEFAULT CHARACTER SET = latin1;
 
 SHOW WARNINGS;
 
+INSERT INTO area VALUES(default, 'Econex', 'Aula');
+INSERT INTO area VALUES(default, 'Econex', 'Centro de Computo');
+INSERT INTO area VALUES(default, 'Econex', 'Administrativo');
+INSERT INTO area VALUES(default, 'F', 'Aula');
+
+INSERT INTO jefecentrocomputo VALUES('s16011681', 'Carlos Carrillo', '2580');
+
+INSERT INTO tecnicoacademico VALUES('S1520', 'Carlos Lopez', '0731', '2288457896', '302', 'clopez@uv.mx');
+INSERT INTO tecnicoacademico VALUES('S3213', 'Nadia Bravo', '1234', '2255998745', '305', 'nbravo@uv.mx');
+
+INSERT INTO responsable VALUES('S8915', 'Ricardo Garcia', '2254189623', '208', 'rgarcia@uv.mx');
+
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

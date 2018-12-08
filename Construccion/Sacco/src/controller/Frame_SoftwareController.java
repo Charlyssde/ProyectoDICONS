@@ -32,6 +32,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.DAO.SoftwareDAO;
+import model.JefeCentroComputo;
 import model.Software;
 
 /**
@@ -75,6 +76,8 @@ public class Frame_SoftwareController implements Initializable {
   private Software software;
   @FXML
   private TextField txtBuscar;
+  
+  private JefeCentroComputo jefe;
 
   /**
    * Initializes the controller class.
@@ -93,6 +96,8 @@ public class Frame_SoftwareController implements Initializable {
 
   @FXML
   private void agregarSoftware(MouseEvent event) {
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     try {
       Parent sc = FXMLLoader.load(getClass().getResource("/view/popups/agregarSoftware.fxml"));
       Scene nu = new Scene(sc);
@@ -109,6 +114,8 @@ public class Frame_SoftwareController implements Initializable {
 
   @FXML
   private void editarSoftware(MouseEvent event) {
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/popups/editarSoftware.fxml"));
     try {
@@ -129,6 +136,8 @@ public class Frame_SoftwareController implements Initializable {
 
   @FXML
   private void eliminarElemento(MouseEvent event) throws SQLException {
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/messages/EliminarMessage.fxml"));
     try {
@@ -160,7 +169,7 @@ public class Frame_SoftwareController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane dashboardJefeCc = loader.getRoot();
     DashboardJefeCCController dashboard = loader.getController();
-    dashboard.cargarUsuario(lblJefeCc.getText());
+    dashboard.cargarUsuario(jefe);
     Scene newScene = new Scene(dashboardJefeCc);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
@@ -185,8 +194,9 @@ public class Frame_SoftwareController implements Initializable {
     }
   }
 
-  public void cargarUsuario(String nombre) {
-    lblJefeCc.setText(nombre);
+  public void cargarUsuario(JefeCentroComputo jefe) {
+    this.jefe = jefe;
+    lblJefeCc.setText(jefe.getNombre());
   }
 
   private void actualizarTabla() throws SQLException {

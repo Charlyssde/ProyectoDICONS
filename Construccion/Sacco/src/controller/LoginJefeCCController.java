@@ -90,7 +90,7 @@ public class LoginJefeCCController implements Initializable {
         
         AnchorPane dashboardJcc = loader.getRoot();
         DashboardJefeCCController dashboard = loader.getController();
-        dashboard.cargarUsuario(usuario.getNombre());
+        dashboard.cargarUsuario(usuario);
         Scene newScene = new Scene(dashboardJcc);
         Stage curStage = (Stage) anchorPane.getScene().getWindow();
         curStage.setScene(newScene);

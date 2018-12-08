@@ -1,16 +1,22 @@
 package controller;
 
+import controller.messages.CancelarMessageController;
+import controller.popups.EditarResponsableController;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -22,7 +28,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.DAO.ResponsableDAO;
+import model.JefeCentroComputo;
 import model.Responsable;
 
 /**
@@ -66,6 +74,8 @@ public class Frame_ResponsablesController implements Initializable {
   private Button btnSearch;
   @FXML
   private ChoiceBox<String> chbCriterio;
+  
+  private JefeCentroComputo jefe;
 
   /**
    * Initializes the controller class.
@@ -74,11 +84,12 @@ public class Frame_ResponsablesController implements Initializable {
   public void initialize(URL url, ResourceBundle rb) {
     cargarBox();
     cargarColumnas();
-    /* try {
+    try {
       actualizarTabla();
     } catch (SQLException ex) {
       Logger.getLogger(Frame_HardwareController.class.getName()).log(Level.SEVERE, null, ex);
-    }*/
+    }
+    selected();
   }
 
   @FXML
@@ -93,7 +104,7 @@ public class Frame_ResponsablesController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane dashboardJefeCc = loader.getRoot();
     DashboardJefeCCController dashboard = loader.getController();
-    dashboard.cargarUsuario(lblJefeCc.getText());
+    dashboard.cargarUsuario(jefe);
     Scene newScene = new Scene(dashboardJefeCc);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
@@ -103,6 +114,8 @@ public class Frame_ResponsablesController implements Initializable {
 
   @FXML
   private void agregarResponsable(MouseEvent event) {
+    btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     try {
       Parent sc = FXMLLoader.load(getClass().getResource("/view/popups/agregarResponsable.fxml"));
       Scene nu = new Scene(sc);
@@ -119,8 +132,14 @@ public class Frame_ResponsablesController implements Initializable {
 
   @FXML
   private void editarResponsable(MouseEvent event) {
+    btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("/view/popups/editarResponsable.fxml"));
     try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/popups/editarResponsable.fxml"));
+      Parent sc = loader.load();
+      EditarResponsableController pantalla = loader.getController();
+      pantalla.cargarResponsable(this.responsable);
       Scene nu = new Scene(sc);
       Stage stage = new Stage();
       stage.setTitle("Editar Responsable");
@@ -134,9 +153,16 @@ public class Frame_ResponsablesController implements Initializable {
   }
 
   @FXML
-  private void eliminarResponsable(MouseEvent event) {
+  private void eliminarResponsable(MouseEvent event) throws SQLException {
+    btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
+    FXMLLoader loader = new FXMLLoader();
+    loader.setLocation(getClass().getResource("/view/messages/CancelarMessage.fxml"));
     try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/CancelarMessage.fxml"));
+      Parent sc = loader.load();
+      CancelarMessageController pantalla = loader.getController();
+      pantalla.vieneDe("Responsable");
+      pantalla.cargarObjeto(responsable);
       Scene nu = new Scene(sc);
       Stage stage = new Stage();
       stage.setTitle("Eliminar");
@@ -150,11 +176,15 @@ public class Frame_ResponsablesController implements Initializable {
   }
 
   @FXML
-  private void actualizarDataTabla(MouseEvent event) {
+  private void actualizarDataTabla(MouseEvent event) throws SQLException {
+    btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
+    actualizarTabla();
   }
 
-  public void cargarUsuario(String nombre) {
-    lblJefeCc.setText(nombre);
+  public void cargarUsuario(JefeCentroComputo jefe) {
+    this.jefe = jefe;
+    lblJefeCc.setText(jefe.getNombre());
   }
 
   public void cargarColumnas() {
@@ -166,7 +196,7 @@ public class Frame_ResponsablesController implements Initializable {
         new PropertyValueFactory<Responsable, String>("nombre"));
 
     correo.setCellValueFactory(
-        new PropertyValueFactory<Responsable, String>("correoInstitucional"));
+        new PropertyValueFactory<Responsable, String>("correo"));
 
     telefono.setCellValueFactory(
         new PropertyValueFactory<Responsable, String>("telefono"));
@@ -176,16 +206,57 @@ public class Frame_ResponsablesController implements Initializable {
   }
 
   public void actualizarTabla() throws SQLException {
-    ResponsableDAO.obtenerAllResponsable();
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
+    tblResponsables.getItems().clear();  
+    ObservableList<Responsable> visibleList =
+        (ObservableList<Responsable>) ResponsableDAO.obtenerAllResponsable();
+    tblResponsables.getItems().addAll(visibleList);
   }
 
   @FXML
   private void buscarPorCriterio(MouseEvent event) throws SQLException {
-    ResponsableDAO.obtenerResponsableNombre(txtBuscar.getText());
+    btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
+    if(txtBuscar.getText().isEmpty() || chbCriterio.getValue() == null){
+      mensaje("Necesitas un criterio y un filtro de busqueda");
+    }else{
+      tblResponsables.getItems().clear();
+    ObservableList<Responsable> visibleList =
+        (ObservableList<Responsable>) ResponsableDAO.obtenerResponsableNombre(txtBuscar.getText());
+    tblResponsables.getItems().addAll(visibleList);
+    }
   }
 
   private void cargarBox() {
     chbCriterio.getItems().addAll("Nombre");
   }
+  
+    private void selected() {
+    tblResponsables.getSelectionModel().selectedItemProperty().addListener(new ChangeListener() {
+      @Override
+      public void changed(ObservableValue observable, Object oldValue, Object newValue) {
+        if (tblResponsables.getSelectionModel().getSelectedItem() != null) {
+          TableView.TableViewSelectionModel selectionModel = tblResponsables.getSelectionModel();
+          responsable = (Responsable) selectionModel.getSelectedItem();
+          System.out.println(responsable.getNombre());
+          btnEditar.setDisable(false);
+          btnEliminar.setDisable(false);
+        } else {
+          btnEditar.setDisable(true);
+          btnEliminar.setDisable(true);
+        }
+      }
 
+    });
+  }
+    private void mensaje(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
+  }
+    
 }

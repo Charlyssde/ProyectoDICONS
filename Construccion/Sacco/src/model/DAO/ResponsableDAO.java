@@ -20,11 +20,11 @@ import model.databaseConection.ConnectionToDb;
 
 /**
  *
- * @author Ricardo Martinez Olivo
+ * @author texch
  */
 public class ResponsableDAO {
 
-  public static List<Responsable> obtenerAllResponsable() throws SQLException {
+ public static List<Responsable> obtenerAllResponsable() throws SQLException {
     ObservableList<Responsable> responsables = 
             FXCollections.observableArrayList();
     Responsable re = null;
@@ -35,14 +35,12 @@ public class ResponsableDAO {
     ResultSet resultadoQuery = st.executeQuery("select * from responsable");
     try {
       while (resultadoQuery.next()) {
-        String numPersonal = resultadoQuery.getString("numResponsable");
+        String numPersonal = resultadoQuery.getString("numPersonal");
         String nombre = (resultadoQuery.getString("nombre"));
         String telefono = (resultadoQuery.getString("telefono"));
         String extension = (resultadoQuery.getString("extension"));
         String correo = (resultadoQuery.getString("correo"));
         re = new Responsable(numPersonal, nombre, telefono, extension, correo);
-        PreparedStatement st2 = null;
-        ResultSet resultadoQuery2 = st2.executeQuery();
         responsables.add(re);
       }
     } catch (SQLException ex) {
@@ -119,8 +117,8 @@ public class ResponsableDAO {
     Connection conexion = null;
     PreparedStatement stp = null;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
-    stp = conexion.prepareStatement("insert into responsables "
-            + "values(?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+    stp = conexion.prepareStatement("insert into responsable "
+            + "values(?,?,?,?,?)");
     stp.setString(1, responsable.getNumPersonal());
     stp.setString(2, responsable.getNombre());
     stp.setString(3, responsable.getTelefono());
@@ -140,6 +138,7 @@ public class ResponsableDAO {
     st.setString(2, responsable.getTelefono());
     st.setString(3, responsable.getExtension());
     st.setString(4, responsable.getCorreo());
+    st.setString(5, responsable.getNumPersonal());
     st.executeUpdate();
   }
    
@@ -153,7 +152,6 @@ public class ResponsableDAO {
     st.setString(1, responsable.getNumPersonal());
     st.executeUpdate();
   }
-  
   
   
   

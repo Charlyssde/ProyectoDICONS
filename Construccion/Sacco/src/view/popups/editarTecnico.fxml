@@ -33,9 +33,8 @@
                </opaqueInsets>
             </TextField>
             <Label layoutX="15.0" layoutY="125.0" text="Nombre Completo:" />
-            <Label layoutX="15.0" layoutY="200.0" text="Dirección:" />
-            <Label layoutX="15.0" layoutY="275.0" text="Teléfono:" />
-            <Label layoutX="200.0" layoutY="275.0" text="Extensión:" />
+            <Label layoutX="14.0" layoutY="212.0" text="Teléfono:" />
+            <Label layoutX="15.0" layoutY="275.0" text="Extensión:" />
             <Label layoutX="15.0" layoutY="350.0" text="Correo Institucional:" />
             <Button fx:id="btnCancelar" layoutX="221.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#cancelarRegistro" style="-fx-background-color: #E92A2A;" text="Cancelar">
                <font>
@@ -54,22 +53,17 @@
                </font>
             </Label>
             <Label layoutX="200.0" layoutY="366.0" prefHeight="25.0" prefWidth="53.0" text="\@uv.mx" />
-            <TextField fx:id="txtNombre" focusTraversable="false" layoutX="15.0" layoutY="142.0" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
+            <TextField fx:id="txtNombre" editable="false" focusTraversable="false" layoutX="15.0" layoutY="142.0" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                <opaqueInsets>
                   <Insets bottom="5.0" />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="txtDireccion" focusTraversable="false" layoutX="15.0" layoutY="217.0" prefHeight="25.0" prefWidth="360.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
+            <TextField fx:id="txtTelefono" focusTraversable="false" layoutX="13.0" layoutY="229.0" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                <opaqueInsets>
                   <Insets bottom="5.0" />
                </opaqueInsets>
             </TextField>
-            <TextField fx:id="txtTelefono" focusTraversable="false" layoutX="15.0" layoutY="292.0" prefHeight="26.0" prefWidth="165.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
-               <opaqueInsets>
-                  <Insets bottom="5.0" />
-               </opaqueInsets>
-            </TextField>
-            <TextField fx:id="txtExtension" focusTraversable="false" layoutX="200.0" layoutY="292.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
+            <TextField fx:id="txtExtension" focusTraversable="false" layoutX="13.0" layoutY="292.0" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0 0 1 0;">
                <opaqueInsets>
                   <Insets bottom="5.0" />
                </opaqueInsets>

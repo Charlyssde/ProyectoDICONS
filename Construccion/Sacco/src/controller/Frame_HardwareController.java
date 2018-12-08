@@ -39,6 +39,7 @@ import javafx.stage.StageStyle;
 import model.DAO.HardwareDAO;
 import model.Hardware;
 import model.Area;
+import model.JefeCentroComputo;
 
 /**
  * FXML Controller class
@@ -83,6 +84,8 @@ public class Frame_HardwareController implements Initializable {
   private TableColumn<Hardware, String> colEstado;
   @FXML
   private Button btnRefreshTable;
+  
+  private JefeCentroComputo jefe;
 
   private Hardware hardware;
 
@@ -123,17 +126,18 @@ public class Frame_HardwareController implements Initializable {
 
     AnchorPane dashboardJefeCc = loader.getRoot();
     DashboardJefeCCController dashboard = loader.getController();
-    dashboard.cargarUsuario(lblJefeCc.getText());
+    dashboard.cargarUsuario(jefe);
     Scene newScene = new Scene(dashboardJefeCc);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
-    curStage.setTitle("Dashboard Técnico Académico");
+    curStage.setTitle("Dashboard Jefe de Centro de Computo");
     curStage.show();
   }
 
   @FXML
   private void agregarHardware(MouseEvent event) throws SQLException {
-
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     try {
       FXMLLoader loader = new FXMLLoader();
       loader.setLocation(getClass().getResource("/view/popups/agregarHardware.fxml"));
@@ -152,6 +156,8 @@ public class Frame_HardwareController implements Initializable {
 
   @FXML
   private void editarHardware(MouseEvent event) {
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/popups/editarHardware.fxml"));
     try {
@@ -172,6 +178,8 @@ public class Frame_HardwareController implements Initializable {
 
   @FXML
   private void eliminarHardware(MouseEvent event) throws SQLException {
+     btnEditar.setDisable(true);
+    btnEliminar.setDisable(true);
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("/view/messages/EliminarMessage.fxml"));
     try {
@@ -209,8 +217,9 @@ public class Frame_HardwareController implements Initializable {
 
   }
 
-  public void cargarUsuario(String nombre) {
-    lblJefeCc.setText(nombre);
+  public void cargarUsuario(JefeCentroComputo jefe) {
+    this.jefe = jefe;
+    lblJefeCc.setText(jefe.getNombre());
   }
 
   private void actualizarTabla() throws SQLException {

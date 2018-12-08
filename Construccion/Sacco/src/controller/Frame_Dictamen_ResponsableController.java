@@ -118,7 +118,7 @@ public class Frame_Dictamen_ResponsableController implements Initializable {
     Scene newScene = new Scene(dict);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
-    curStage.setTitle("Dictamen de Mantenimiento");
+    curStage.setTitle("Dashboard Tecnico Academico");
     curStage.show();
   }
 

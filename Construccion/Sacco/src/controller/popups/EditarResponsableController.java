@@ -5,20 +5,20 @@
  */
 package controller.popups;
 
-import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.DAO.ResponsableDAO;
+import model.Responsable;
 
 /**
  * FXML Controller class
@@ -34,8 +34,6 @@ public class EditarResponsableController implements Initializable {
   @FXML
   private TextField txtNombre;
   @FXML
-  private TextField txtDireccion;
-  @FXML
   private TextField txtTelefono;
   @FXML
   private TextField txtExtension;
@@ -46,6 +44,8 @@ public class EditarResponsableController implements Initializable {
   @FXML
   private Button btnCancelar;
 
+  private Responsable responsable;
+
   /**
    * Initializes the controller class.
    */
@@ -55,20 +55,17 @@ public class EditarResponsableController implements Initializable {
   }
 
   @FXML
-  private void actualizarResponsable(MouseEvent event) {
-    try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/ExitoMessage.fxml"));
-      Scene nu = new Scene(sc);
-      Stage stage = new Stage();
-      stage.setTitle("Éxito");
-      stage.initModality(Modality.APPLICATION_MODAL);
-      stage.setResizable(false);
-      stage.setScene(nu);
-      stage.show();
-      Stage thisStage = (Stage) anchorPane.getScene().getWindow();
-      thisStage.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+  private void actualizarResponsable(MouseEvent event) throws SQLException {
+    if (camposVacios()) {
+      mensaje("No pueden quedar campos vacios");
+    } else {
+      Responsable nuevo = new Responsable(responsable.getNumPersonal(),
+          txtNombre.getText(), txtTelefono.getText(), txtExtension.getText(),
+          responsable.getCorreo());
+      ResponsableDAO.editarResponsable(nuevo);
+      mensaje("Responsable actualizado con exito");
+      Stage stage = (Stage) anchorPane.getScene().getWindow();
+      stage.close();
     }
   }
 
@@ -78,4 +75,30 @@ public class EditarResponsableController implements Initializable {
     stage.close();
   }
 
+  public void cargarResponsable(Responsable responsable) {
+    this.responsable = responsable;
+    txtNumPersonal.setText(responsable.getNumPersonal());
+    txtNombre.setText(responsable.getNombre());
+    txtTelefono.setText(responsable.getTelefono());
+    txtExtension.setText(responsable.getExtension());
+    txtCorreo.setText(responsable.getCorreo());
+
+  }
+
+  public boolean camposVacios() {
+    if (txtTelefono.getText().isEmpty() || txtExtension.getText().isEmpty()
+        || txtNombre.getText().isEmpty()) {
+      return true;
+    }
+    return false;
+  }
+
+  private void mensaje(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
+  }
 }

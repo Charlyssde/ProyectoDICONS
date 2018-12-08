@@ -7,18 +7,23 @@ package controller.popups;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.DAO.ResponsableDAO;
+import model.Responsable;
 
 /**
  * FXML Controller class
@@ -33,8 +38,6 @@ public class AgregarResponsableController implements Initializable {
   private TextField txtNumPersonal;
   @FXML
   private TextField txtNombre;
-  @FXML
-  private TextField txtDireccion;
   @FXML
   private TextField txtTelefono;
   @FXML
@@ -61,21 +64,37 @@ public class AgregarResponsableController implements Initializable {
   }
 
   @FXML
-  private void guardarResponsable(MouseEvent event) {
-    try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/ExitoMessage.fxml"));
-      Scene nu = new Scene(sc);
-      Stage stage = new Stage();
-      stage.setTitle("Éxito");
-      stage.initModality(Modality.APPLICATION_MODAL);
-      stage.setResizable(false);
-      stage.setScene(nu);
-      stage.show();
-      Stage thisStage = (Stage) anchorPane.getScene().getWindow();
-      thisStage.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+  private void guardarResponsable(MouseEvent event) throws SQLException {
+    if(camposVacios()){
+      mensaje("No pueden quedar campos vacios");
+    }else{
+      Responsable nuevo = new Responsable(txtNumPersonal.getText(), txtNombre.getText(), 
+          txtTelefono.getText(),txtExtension.getText(), txtCorreo.getText());
+      ResponsableDAO.agregarResponsable(nuevo);
+      mensaje("Responsable guardado exitosamente");
     }
   }
 
+  private boolean camposVacios(){
+    if(txtNumPersonal.getText().isEmpty() || txtNombre.getText().isEmpty() ||
+       txtTelefono.getText().isEmpty()|| txtCorreo.getText().isEmpty() || 
+        txtExtension.getText().isEmpty()){
+      return true;
+    }
+    return false;
+  }
+  
+  
+  
+  
+  
+  
+      private void mensaje(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
+  }
 }

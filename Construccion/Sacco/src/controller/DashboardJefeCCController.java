@@ -19,6 +19,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import model.JefeCentroComputo;
 
 /**
  * FXML Controller class
@@ -47,6 +48,8 @@ public class DashboardJefeCCController implements Initializable {
   private Button btnResponsables;
   @FXML
   private Button btnTecnicos;
+  
+  private JefeCentroComputo jefe;
 
   /**
    * Initializes the controller class.
@@ -74,8 +77,9 @@ public class DashboardJefeCCController implements Initializable {
     curStage.show();
   }
 
-  void cargarUsuario(String nombre) {
-    lblJefeCc.setText(nombre);
+  void cargarUsuario(JefeCentroComputo jefe) {
+    this.jefe = jefe;
+    lblJefeCc.setText(jefe.getNombre());
     //To change body of generated methods, choose Tools | Templates.
   }
 
@@ -91,7 +95,7 @@ public class DashboardJefeCCController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane adminHardware = loader.getRoot();
     Frame_HardwareController frameHw = loader.getController();
-    frameHw.cargarUsuario(lblJefeCc.getText());
+    frameHw.cargarUsuario(jefe);
     Scene newScene = new Scene(adminHardware);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
@@ -111,7 +115,7 @@ public class DashboardJefeCCController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane adminSoftware = loader.getRoot();
     Frame_SoftwareController frameSw = loader.getController();
-    frameSw.cargarUsuario(lblJefeCc.getText());
+    frameSw.cargarUsuario(jefe);
     Scene newScene = new Scene(adminSoftware);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
@@ -131,7 +135,7 @@ public class DashboardJefeCCController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane adminSoftware = loader.getRoot();
     Frame_ResponsablesController frameResp = loader.getController();
-    frameResp.cargarUsuario(lblJefeCc.getText());
+    frameResp.cargarUsuario(jefe);
     Scene newScene = new Scene(adminSoftware);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);
@@ -151,7 +155,7 @@ public class DashboardJefeCCController implements Initializable {
     //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane adminSoftware = loader.getRoot();
     Frame_UsuariosController frameTa = loader.getController();
-    frameTa.cargarUsuario(lblJefeCc.getText());
+    frameTa.cargarUsuario(jefe);
     Scene newScene = new Scene(adminSoftware);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
     curStage.setScene(newScene);

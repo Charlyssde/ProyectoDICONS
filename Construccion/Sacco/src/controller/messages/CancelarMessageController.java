@@ -17,9 +17,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.DAO.HardwareDAO;
+import model.DAO.ResponsableDAO;
 import model.DAO.SoftwareDAO;
+import model.DAO.TecnicoAcademicoDAO;
 import model.Hardware;
+import model.Responsable;
 import model.Software;
+import model.TecnicoAcademico;
 
 /**
  * FXML Controller class
@@ -57,8 +61,10 @@ public class CancelarMessageController implements Initializable {
         HardwareDAO.eliminarHardware((Hardware) eliminar);
         break;
       case "Responsable":
+        ResponsableDAO.eliminarResponsable((Responsable) eliminar);
         break;
       case "Tecnico":
+        TecnicoAcademicoDAO.eliminarTecnicoAcademico((TecnicoAcademico) eliminar);
         break;
       default:
         break;
@@ -80,6 +86,10 @@ public class CancelarMessageController implements Initializable {
       eliminar = (Hardware) objeto;
     } else if (objeto.getClass().toString().equals("class model.Software")) {
       eliminar = (Software) objeto;
+    }else if(objeto.getClass().toString().equals("class model.TecnicoAcademico")){
+      eliminar = (TecnicoAcademico) objeto;
+    }else if(objeto.getClass().toString().equals("class model.Software")){
+      eliminar = (Responsable) objeto;
     }
   }
 

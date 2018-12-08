@@ -5,14 +5,12 @@
  */
 package controller.popups;
 
-import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -20,8 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.DAO.HardwareDAO;
+import model.DAO.TecnicoAcademicoDAO;
+import model.TecnicoAcademico;
 
 /**
  * FXML Controller class
@@ -41,8 +42,6 @@ public class EditarTecnicoController implements Initializable {
   @FXML
   private TextField txtNombre;
   @FXML
-  private TextField txtDireccion;
-  @FXML
   private TextField txtTelefono;
   @FXML
   private TextField txtExtension;
@@ -54,6 +53,7 @@ public class EditarTecnicoController implements Initializable {
   private Label lblShowPass;
   @FXML
   private TextField txtPasswordShowing;
+  private TecnicoAcademico tecnico;
 
   /**
    * Initializes the controller class.
@@ -64,20 +64,17 @@ public class EditarTecnicoController implements Initializable {
   }
 
   @FXML
-  private void actualizarTecnico(MouseEvent event) {
-    try {
-      Parent sc = FXMLLoader.load(getClass().getResource("/view/messages/ExitoMessage.fxml"));
-      Scene nu = new Scene(sc);
-      Stage stage = new Stage();
-      stage.setTitle("Éxito");
-      stage.initModality(Modality.APPLICATION_MODAL);
-      stage.setResizable(false);
-      stage.setScene(nu);
-      stage.show();
-      Stage thisStage = (Stage) anchorPane.getScene().getWindow();
-      thisStage.close();
-    } catch (IOException e) {
-      e.printStackTrace();
+  private void actualizarTecnico(MouseEvent event) throws SQLException {
+    if(camposVacios()){
+      mensaje("No se pueden quedar campos vacios");
+    }else{
+      TecnicoAcademico nuevo = new TecnicoAcademico(
+          tecnico.getNumPersonal(), tecnico.getNombre(), txtPassword.getText(), 
+          txtTelefono.getText(), txtExtension.getText(), tecnico.getCorreoInstitucional());
+      TecnicoAcademicoDAO.editarTecnicoAcademico(nuevo);
+      Stage stage = (Stage) anchorPane.getScene().getWindow();
+      stage.close();
+      mensaje("Tecnico actualizado correctamente");
     }
   }
 
@@ -105,4 +102,31 @@ public class EditarTecnicoController implements Initializable {
     txtPasswordShowing.setText(txtPassword.getText());
   }
 
+  public void cargarTecnico(TecnicoAcademico nuevo){
+    this.tecnico = nuevo;
+    txtNumPersonal.setText(tecnico.getNumPersonal());
+    txtNombre.setText(tecnico.getNombre());
+    txtCorreo.setText(tecnico.getCorreoInstitucional());
+    txtTelefono.setText(tecnico.getTelefono());
+    txtExtension.setText(tecnico.getExtension());
+    txtPassword.setText(tecnico.getPassword());
+  }
+  
+  private boolean camposVacios(){
+    if(txtExtension.getText().isEmpty() || txtTelefono.getText().isEmpty() ||
+        txtExtension.getText().isEmpty() || txtPassword.getText().isEmpty()){
+      return true;
+    }
+    
+    return false;
+  }
+  
+  private void mensaje(String mensaje) {
+    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
+    dialogo.setTitle("Aviso");
+    dialogo.setHeaderText(null);
+    dialogo.setContentText(mensaje);
+    dialogo.initStyle(StageStyle.UTILITY);
+    dialogo.showAndWait();
+  }
 }
