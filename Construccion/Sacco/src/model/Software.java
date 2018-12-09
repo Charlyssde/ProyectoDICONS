@@ -38,26 +38,50 @@ public class Software {
   public Software() {
   }
 
+/**
+ * 
+ * @return NumInventario actual
+ */
   public Integer getNumInventario() {
     return numInventario;
   }
 
+/**
+ * 
+ * @return Nombre actual
+ */
   public String getNombre() {
     return nombre;
   }
 
+ /**
+  * 
+  * @return NumLicencias actuales
+  */
   public Integer getNumLicencias() {
     return numLicencias;
   }
 
+/**
+ * 
+ * @return Observaciones actuales
+ */
   public String getObservaciones() {
     return observaciones;
   }
 
+/**
+ * 
+ * @return FechaAdquisicion actual
+ */
   public Date getFechaAdquisicion() {
     return fechaAdquisicion;
   }
 
+/**
+ * 
+ * @return Version actual
+ */
   public String getVersion() {
     return version;
   }

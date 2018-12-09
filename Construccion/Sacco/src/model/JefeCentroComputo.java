@@ -31,14 +31,26 @@ public class JefeCentroComputo {
   public JefeCentroComputo() {
   }
 
+/**
+ * 
+ * @return NumPersonal actual
+ */
   public String getNumPersonal() {
     return numPersonal;
   }
 
+/**
+ * 
+ * @return Nombre actual 
+ */
   public String getNombre() {
     return nombre;
   }
 
+/**
+ * 
+ * @return Password actual
+ */
   public String getPassword() {
     return password;
   }

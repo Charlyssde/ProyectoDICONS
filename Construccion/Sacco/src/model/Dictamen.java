@@ -33,26 +33,50 @@ public class Dictamen {
     this.equipo = equipo;
   }
 
+/**
+ * 
+ * @return Descripcion acual 
+ */
   public String getDescripcion() {
     return descripcion;
   }
 
+/**
+ * 
+ * @return Tipo actual
+ */
   public String getTipo() {
     return tipo;
   }
 
+/**
+ * 
+ * @return Obervaciones actuales
+ */
   public String getObservaciones() {
     return observaciones;
   }
 
+/**
+ * 
+ * @return Tecnico actual
+ */
   public TecnicoAcademico getTecnico() {
     return tecnico;
   }
 
+/**
+ * 
+ * @return Solicitante actual
+ */
   public Responsable getSolicitante() {
     return solicitante;
   }
 
+/**
+ * 
+ * @return Equipo actual
+ */
   public Hardware getEquipo() {
     return equipo;
   }

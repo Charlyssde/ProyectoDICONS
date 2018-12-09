@@ -49,38 +49,74 @@ public class Hardware {
     this.tipo = tipo;
   }
 
+/**
+ * 
+ * @return NumInventario actual
+ */
   public Integer getNumInventario() {
     return numInventario;
   }
 
+/**
+ * 
+ * @return Marca actual
+ */
   public String getMarca() {
     return marca;
   }
 
+/**
+ * 
+ * @return Modelo actual
+ */
   public String getModelo() {
     return modelo;
   }
 
+/**
+ * 
+ * @return NumSerie actual
+ */
   public String getNumSerie() {
     return numSerie;
   }
 
+/**
+ * 
+ * @return Ubicacion actual
+ */
   public Area getUbicacion() {
     return ubicacion;
   }
 
+/**
+ * 
+ * @return Estado actual 
+ */
   public String getEstado() {
     return estado;
   }
 
+/**
+ * 
+ * @return Tipo actual
+ */
   public String getTipo() {
     return tipo;
   }
 
+  /**
+   * 
+   * @param area area to set 
+   */
   public void setUbicacion(Area area) {
     this.ubicacion = area;
   }
 
+/**
+ * 
+ * @param estado estado to set
+ */
   public void setEstado(String estado) {
     this.estado = estado;
   }

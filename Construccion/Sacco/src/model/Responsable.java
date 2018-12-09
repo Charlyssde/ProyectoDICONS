@@ -29,22 +29,42 @@ public class Responsable {
     this.correo = correo;
   }
 
+/**
+ * 
+ * @return Nombre actual
+ */
   public String getNombre() {
     return nombre;
   }
 
+/**
+ * 
+ * @return NumPersonal actual
+ */
   public String getNumPersonal() {
     return numPersonal;
   }
 
+/**
+ * 
+ * @return Telefono actual
+ */
   public String getTelefono() {
     return telefono;
   }
 
+/**
+ * 
+ * @return Extension actual
+ */
   public String getExtension() {
     return extension;
   }
 
+/**
+ * 
+ * @return  Correo actual
+ */
   public String getCorreo() {
     return correo;
   }

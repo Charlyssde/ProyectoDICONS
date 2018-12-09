@@ -28,15 +28,27 @@ public class Area {
     this.uso = uso;
     this.show = edificio + " - " + uso;
   }
-
+  
+/**
+ * 
+ * @return Ubicacion actual
+ */
   public Integer getIdUbicacion() {
     return idUbicacion;
   }
-
+  
+/**
+ * 
+ * @return Edificio actual
+ */
   public String getEdificio() {
     return edificio;
   }
 
+/**
+ * 
+ * @return Uso actual
+ */
   public String getUso() {
     return uso;
   }

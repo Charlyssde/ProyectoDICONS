@@ -41,26 +41,50 @@ public class TecnicoAcademico {
 
   }
 
+/**
+ * 
+ * @return NumPersonal actual 
+ */
   public String getNumPersonal() {
     return numPersonal;
   }
 
+/**
+ * 
+ * @return Nombre actual
+ */
   public String getNombre() {
     return nombre;
   }
 
+/**
+ * 
+ * @return Password actual
+ */
   public String getPassword() {
     return password;
   }
 
+/**
+ * 
+ * @return Telefono actual 
+ */
   public String getTelefono() {
     return telefono;
   }
 
+/**
+ * 
+ * @return Extension actual
+ */
   public String getExtension() {
     return extension;
   }
 
+/**
+ * 
+ * @return CorreoInstitucional actual
+ */
   public String getCorreoInstitucional() {
     return correoInstitucional;
   }
