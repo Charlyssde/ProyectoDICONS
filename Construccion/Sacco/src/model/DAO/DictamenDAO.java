@@ -17,7 +17,12 @@ import model.databaseConection.ConnectionToDb;
  * @author texch
  */
 public class DictamenDAO {
-
+/**
+ * Se guarda un nuevo objeto de tipo Dictamen en la base de datos.
+ * 
+ * @param dictamen
+ * @throws SQLException 
+ */
   public static void guardarDictamen(Dictamen dictamen) throws SQLException {
     Connection conexion = null;
     PreparedStatement stp = null;

@@ -24,6 +24,13 @@ import model.databaseConection.ConnectionToDb;
  */
 public class ResponsableDAO {
 
+/**
+ * Se obtienen todos los objetos de tipo Responsable que estan registrados en la
+ * base de datos.
+ * 
+ * @return
+ * @throws SQLException 
+ */    
  public static List<Responsable> obtenerAllResponsable() throws SQLException {
     ObservableList<Responsable> responsables = 
             FXCollections.observableArrayList();
@@ -53,7 +60,14 @@ public class ResponsableDAO {
     }
     return responsables;  
   }
-
+/**
+ * Se obtienen objetos de tipo Responsable mediante el nombre, que estan 
+ * registrados en la base de datos.
+ * 
+ * @param name
+ * @return
+ * @throws SQLException 
+ */
   public static List<Responsable> obtenerResponsableNombre(String name) 
     throws SQLException{
     ObservableList<Responsable> responsables = 
@@ -86,6 +100,14 @@ public class ResponsableDAO {
     return responsables;
   }
 
+/**
+ * Obtiene un objeto de tipo Responsable registrado en la base de datos
+ * mediante su numPersonal.
+ * 
+ * @param numPersonal
+ * @return
+ * @throws SQLException 
+ */  
   public static Responsable obtenerResponsableNumPersonal(String numPersonal) 
           throws SQLException {
     Responsable responsable = null;
@@ -112,6 +134,12 @@ public class ResponsableDAO {
     return responsable;
   }
   
+  /**
+   * Se agrega un nuevo objeto de tipo Responsable a la base de datos.
+   * 
+   * @param responsable
+   * @throws SQLException 
+   */  
   public static void agregarResponsable(Responsable responsable) throws
           SQLException {
     Connection conexion = null;
@@ -126,7 +154,14 @@ public class ResponsableDAO {
     stp.setString(5, responsable.getCorreo());
     stp.executeUpdate();      
   }
-  
+   
+  /**
+   * Se edita un objeto de tipo Responsable que esté registrado en la base de 
+   * datos.
+   * 
+   * @param responsable
+   * @throws SQLException 
+   */
    public static void editarResponsable(Responsable responsable) throws 
            SQLException {
     Connection conexion;
@@ -142,6 +177,12 @@ public class ResponsableDAO {
     st.executeUpdate();
   }
    
+  /**
+   * Se elimina un objeto de tipo Responsable de la base de datos.
+   * 
+   * @param responsable
+   * @throws SQLException 
+   */ 
   public static void eliminarResponsable(Responsable responsable) 
     throws SQLException {
     Connection conexion = null;

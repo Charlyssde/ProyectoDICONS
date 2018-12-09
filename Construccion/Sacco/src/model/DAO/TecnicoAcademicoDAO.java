@@ -22,7 +22,15 @@ import model.databaseConection.ConnectionToDb;
  * @author texch
  */
 public class TecnicoAcademicoDAO {
-
+  
+  /**
+   * Se obtiene un objeto de tipo TecnicoAcademico mediante los criterios 
+   * ingresados por el usuario.
+   * 
+   * @param ta
+   * @return
+   * @throws SQLException 
+   */  
   public static TecnicoAcademico obtenerTecnico(TecnicoAcademico ta) throws SQLException {
     TecnicoAcademico academico = null;
     Connection conexion = null;
@@ -57,6 +65,12 @@ public class TecnicoAcademicoDAO {
     return academico;
   }
 
+  /**
+   * Se guarda un objeto de tipo TecnicoAcademico dentro de la base de datos.
+   * 
+   * @param tecnico
+   * @throws SQLException 
+   */
   public static void guardarTecnico(TecnicoAcademico tecnico) throws SQLException {
     Connection conexion = null;
     try {
@@ -78,6 +92,12 @@ public class TecnicoAcademicoDAO {
     }
   }
 
+  /**
+   * Se obtienen todos los objetos de tipo TecnicoAcademico de la base de datos.
+   * 
+   * @return
+   * @throws SQLException 
+   */
   public static List<TecnicoAcademico> obtenerAllTecnicos() throws SQLException {
     ObservableList<TecnicoAcademico> academicos = FXCollections.observableArrayList();
     TecnicoAcademico academico;
@@ -109,11 +129,54 @@ public class TecnicoAcademicoDAO {
     return academicos;
   }
 
-  public static List<TecnicoAcademico> obtenerTecnicoAcademicoNombre(String criterio) {
-    return null;
+  /**
+   * Se obtienen objetos de tipo TecnicoAcademico de la base de datos
+   * mediante el criterio ingresado por el usuario (nombre).
+   * 
+   * @param criterio
+   * @return 
+   */
+  public static List<TecnicoAcademico> obtenerTecnicoAcademicoNombre
+        (String criterio) throws SQLException {
+    ObservableList<TecnicoAcademico> tecnicos = 
+            FXCollections.observableArrayList();
+    TecnicoAcademico ta = null;
+    Connection conexion = null;
+    conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
+    PreparedStatement st = null;
+    st = conexion.prepareStatement("select * from tecnicoacademico"
+      + " where nombre = ?");
+    st.setString(1, criterio);
+    ResultSet resultadoQuery = st.executeQuery();
+    try {
+      while (resultadoQuery.next()) {
+        String numPersonal = (resultadoQuery.getString("numPersonal"));
+        String nombre = (resultadoQuery.getString("nombre"));
+        String password = (resultadoQuery.getString("password"));
+        String telefono = (resultadoQuery.getString("telefono"));
+        String extension = (resultadoQuery.getString("extension"));
+        String correo = (resultadoQuery.getString("correo"));
+        
+        ta = new TecnicoAcademico(numPersonal, nombre, password, telefono,
+                extension, correo);
+        tecnicos.add(ta);  
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE,
+        null, ex);
+    } finally {
+      conexion.close();
+    }
+    return tecnicos;
 
   }
 
+  /**
+   * Se edita un objeto de tipo TecnicoAcademico que esté en la base de datos.
+   * 
+   * @param nuevo
+   * @throws SQLException 
+   */
   public static void editarTecnicoAcademico(TecnicoAcademico nuevo) throws SQLException {
      Connection conexion;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
@@ -130,6 +193,11 @@ public class TecnicoAcademicoDAO {
     st.executeUpdate();
   }
 
+  /**
+   * Se elimina un objeto de tipo TecnicoAcademico de la base datos.
+   * @param seleccionado
+   * @throws SQLException 
+   */
   public static void eliminarTecnicoAcademico(TecnicoAcademico seleccionado) throws SQLException {
         Connection conexion = null;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
