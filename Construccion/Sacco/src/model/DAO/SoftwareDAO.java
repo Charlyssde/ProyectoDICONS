@@ -24,7 +24,13 @@ import model.databaseConection.ConnectionToDb;
  * @author texch
  */
 public class SoftwareDAO {
-
+  /**
+   * Se obtienen todos los objetos de tipo Software registrados en la base de 
+   * datos.
+   * 
+   * @return
+   * @throws SQLException 
+   */
   public static List<Software> obtenerAllSoftware() throws SQLException {
     ObservableList<Software> softwares = FXCollections.observableArrayList();
     Software soft = null;
@@ -53,7 +59,14 @@ public class SoftwareDAO {
     }
     return softwares;
   }
-
+  /**
+   * Se obtienen todos los objetos de tipo Software que cumplan con el criterio
+   * ingresado por el usuario.
+   * 
+   * @param criterio
+   * @return
+   * @throws SQLException 
+   */
   public static List<Software> obtenerSoftwareNombre(String criterio) throws SQLException {
     ObservableList<Software> lista = FXCollections.observableArrayList();
     Connection conexion;
@@ -78,7 +91,14 @@ public class SoftwareDAO {
     return lista;
 
   }
-
+  
+  /**
+   * Se edita un objeto de tipo software que esté registrado en la base de 
+   * datos.
+   * 
+   * @param nuevo
+   * @throws SQLException 
+   */
   public static void editarSoftware(Software nuevo) throws SQLException {
     Connection conexion;
     PreparedStatement stp;
@@ -93,6 +113,11 @@ public class SoftwareDAO {
     stp.executeUpdate();
   }
 
+  /**
+   * Se agrega un nuevo objeto de tipo Software a la base de datos.
+   * @param nuevo
+   * @throws SQLException 
+   */
   public static void agregarSoftware(Software nuevo) throws SQLException {
 
     Connection conexion = null;
@@ -108,6 +133,11 @@ public class SoftwareDAO {
     stp.executeUpdate();
   }
 
+  /**
+   * Se elimina un objeto de tipo software de la base de datos.
+   * @param seleccionado
+   * @throws SQLException 
+   */
   public static void eliminarSoftware(Software seleccionado) throws SQLException {
     Connection conexion;
     PreparedStatement stp;

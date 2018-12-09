@@ -21,7 +21,14 @@ import model.databaseConection.ConnectionToDb;
  * @author texch
  */
 public class AreaDAO {
-
+/**
+ * Se obtiene la ubicacion mediante un parametro dado por el usuario de tipo 
+ * entero.
+ * 
+ * @param id
+ * @return
+ * @throws SQLException 
+ */
   public static Area obtenerUbicacion(int id) throws SQLException {
     Area area = null;
     Connection conexion = null;
@@ -41,7 +48,12 @@ public class AreaDAO {
     return area;
 
   }
-
+/**
+ * Se obtienen todas las areas registradas en la base de datos.
+ * 
+ * @return
+ * @throws SQLException 
+ */
   public static List<Area> obtenerAllAreas() throws SQLException {
     ObservableList<Area> listArea = FXCollections.observableArrayList();
     Area area = null;

@@ -21,6 +21,15 @@ import java.util.logging.Logger;
  */
 public class JefeCentroComputoDAO {
 
+/**
+ * Se obtiene un objeto de tipo JefeCentroComputo de la base de datos de acuerdo
+ * con los criterios ingresados por el usuario. Despues inicia sesion en el 
+ * sistema si sus criterios estan registrados en la base de datos.
+ * 
+ * @param datos
+ * @return
+ * @throws SQLException 
+ */
   public static JefeCentroComputo obtenerJefeCc(JefeCentroComputo datos) throws SQLException {
     Connection conexion = null;
     JefeCentroComputo jcc = null;

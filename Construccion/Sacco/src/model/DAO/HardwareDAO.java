@@ -24,7 +24,12 @@ import model.databaseConection.ConnectionToDb;
  * @author texch
  */
 public class HardwareDAO {
-
+/**
+ * Se obtienen todos los registros de hardware que estan dentro de la base de 
+ * datos.
+ * @return
+ * @throws SQLException 
+ */
   public static List<Hardware> obtenerAllHardware() throws SQLException {
     ObservableList<Hardware> hardwares = FXCollections.observableArrayList();
     Hardware hw = null;
@@ -66,7 +71,12 @@ public class HardwareDAO {
     }
     return hardwares;
   }
-
+/**
+ * Se agrega un nuevo objeto de tipo hardware en la base de datos.
+ *
+ * @param hardware
+ * @throws SQLException 
+ */
   public static void agregarHardware(Hardware hardware) throws SQLException {
     Connection conexion = null;
     PreparedStatement stp = null;
@@ -81,7 +91,14 @@ public class HardwareDAO {
     stp.setInt(6, hardware.getUbicacion().getIdUbicacion());
     stp.executeUpdate();
   }
-
+/**
+ * Se obtienen todos los objetos de tipo hardware de acuerdo con la marca que 
+ * esta registrada.
+ * 
+ * @param criterio
+ * @return
+ * @throws SQLException 
+ */
   public static List<Hardware> obtenerHardwareMarca(String criterio) throws SQLException {
     ObservableList<Hardware> hardwares = FXCollections.observableArrayList();
     Hardware hw = null;
@@ -121,7 +138,14 @@ public class HardwareDAO {
     }
     return hardwares;
   }
-
+/**
+ * Se obtienen todos los objetos de tipo hardware de acuerdo con el estado que 
+ * esta registrado con el.
+ * 
+ * @param criterio
+ * @return
+ * @throws SQLException 
+ */
   public static List<Hardware> obtenerHardwareEstado(String criterio) throws SQLException {
     ObservableList<Hardware> hardwares = FXCollections.observableArrayList();
     Hardware hw = null;
@@ -157,7 +181,13 @@ public class HardwareDAO {
     conexion.close();
     return hardwares;
   }
-
+/**
+ * Se edita un objeto de tipo hardware que esté registrado dentro de la base
+ * de datos(no se puede editar el numInventario).
+ * 
+ * @param nuevo
+ * @throws SQLException 
+ */
   public static void editarHardware(Hardware nuevo) throws SQLException {
     Connection conexion;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
@@ -172,7 +202,13 @@ public class HardwareDAO {
     st.setInt(6, nuevo.getNumInventario());
     st.executeUpdate();
   }
-
+/**
+ * Se edita las propiedades de un objeto de tipo hardware que se encuentre en 
+ * mantenimiento.
+ * 
+ * @param nuevo
+ * @throws SQLException 
+ */
   public static void editarHardwareFromManten(Hardware nuevo) throws SQLException {
     Connection conexion;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
@@ -182,7 +218,14 @@ public class HardwareDAO {
     st.setInt(2, nuevo.getNumInventario());
     st.executeUpdate();
   }
-
+/**
+ * Se obtiene un objeto de tipo hardware de acuerdo con el atributo 
+ * numInventario.
+ * 
+ * @param numero
+ * @return
+ * @throws SQLException 
+ */
   public static Hardware obtenerHardwareNumInv(Integer numero) throws SQLException {
     Hardware hw = null;
     Connection conexion = null;
@@ -216,7 +259,13 @@ public class HardwareDAO {
     conexion.close();
     return hw;
   }
-
+/**
+ * Se elimina un objeto de tipo hardware que se seleccionó en la GUI de la base 
+ * de datos.
+ * 
+ * @param seleccionado
+ * @throws SQLException 
+ */
   public static void eliminarHardware(Hardware seleccionado) throws SQLException {
     Connection conexion = null;
     conexion = ConnectionToDb.conectar("root", "2580", "sacco", "localhost");
