@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Sacco.jar" size="686403" download="eager" />
+    <jar href="Sacco.jar" size="708608" download="eager" />
     <jar href="lib\mybatis-3.3.1.jar" size="1567287" download="eager" />
     <jar href="lib\mysql-connector-java-5.0.8-bin.jar" size="540852" download="eager" />
     <jar href="lib\mysql-connector-java-5.1.39-bin.jar" size="989497" download="eager" />

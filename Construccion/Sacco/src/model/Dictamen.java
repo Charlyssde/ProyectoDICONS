@@ -22,6 +22,10 @@ public class Dictamen {
   private Responsable solicitante;
 
   private Hardware equipo;
+  
+  public Dictamen(){
+    
+  }
 
   public Dictamen(String descripcion, String tipo, String observaciones, TecnicoAcademico tecnico,
       Responsable solicitante, Hardware equipo) {

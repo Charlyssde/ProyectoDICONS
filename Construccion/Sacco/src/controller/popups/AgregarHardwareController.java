@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller.popups;
 
-import controller.Frame_HardwareController;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -14,18 +14,17 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Area;
-import model.DAO.AreaDAO;
-import model.DAO.HardwareDAO;
+import dao.AreaDAO;
+import dao.HardwareDAO;
 import model.Hardware;
+import model.Mensaje;
 
 /**
  * FXML Controller class
@@ -50,12 +49,6 @@ public class AgregarHardwareController implements Initializable {
   private TextField txtModelo;
   @FXML
   private ChoiceBox<String> chbTipo;
-
-  private Frame_HardwareController fhc;
-
-  private Hardware hardware;
-
-  public ObservableList<Area> areas;
 
   String[] ubicaciones;
 
@@ -85,29 +78,20 @@ public class AgregarHardwareController implements Initializable {
   private void guardarHardware(MouseEvent event) throws SQLException {
     if (!camposVacios()) {
       seleccionada();
-      hardware = new Hardware(null, txtMarca.getText(), txtModelo.getText(),
+      Hardware hardware = new Hardware(null, txtMarca.getText(), txtModelo.getText(),
           txtNumSerie.getText(), "Dispo", chbTipo.getValue(), area);
       guardarEnBd(hardware);
       Stage stage = (Stage) anchorPane.getScene().getWindow();
       stage.close();
-      mensaje("Hardware guardado con exito en la base de datos");
+      Mensaje.mostrarMensaje("Hardware guardado con exito en la base de datos");
     } else {
-      mensaje("Todos los campos deben estar llenos");
+      Mensaje.mostrarMensaje("Todos los campos deben estar llenos");
     }
 
   }
 
-  private void guardarEnBd(Hardware hardware) throws SQLException {
+  private void guardarEnBd(Hardware hardware) {
     HardwareDAO.agregarHardware(hardware);
-  }
-
-  public void mensaje(String mensaje) {
-    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-    dialogo.setTitle("Aviso");
-    dialogo.setHeaderText(null);
-    dialogo.setContentText(mensaje);
-    dialogo.initStyle(StageStyle.UTILITY);
-    dialogo.showAndWait();
   }
 
   private void cargarBox() throws SQLException {
@@ -116,23 +100,20 @@ public class AgregarHardwareController implements Initializable {
   }
 
   private void cargarAreas() throws SQLException {
-    areas = (ObservableList<Area>) AreaDAO.obtenerAllAreas();
+    ObservableList<Area> areas = (ObservableList<Area>) AreaDAO.obtenerAllAreas();
     ubicaciones = new String[areas.size()];
     ids = new int[areas.size()];
     for (int i = 0; i < areas.size(); i++) {
       ubicaciones[i] = areas.get(i).toString();
       ids[i] = areas.get(i).getIdUbicacion();
-      System.out.println(areas.get(i).toString());
       chbEdificio.getItems().add(areas.get(i).toString());
     }
   }
 
   private boolean camposVacios() {
-    if (txtMarca.getText().equals("") || txtModelo.getText().equals("")
-        || txtNumSerie.getText().equals("") || chbTipo.getValue().isEmpty() || chbEdificio.getValue().isEmpty()) {
-      return true;
-    }
-    return false;
+    return (txtMarca.getText().equals("") || txtModelo.getText().equals("")
+        || txtNumSerie.getText().equals("") || chbTipo.getValue().isEmpty() 
+        || chbEdificio.getValue().isEmpty());
   }
 
   private void seleccionada() throws SQLException {

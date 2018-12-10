@@ -1,0 +1,143 @@
+Environment variables:
+  - =::=::\
+  - =C:=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco
+  - ALLUSERSPROFILE=C:\ProgramData
+  - APPDATA=C:\Users\texch\AppData\Roaming
+  - COMPUTERNAME=LAPTOP-CARLOSCC
+  - ComSpec=C:\WINDOWS\system32\cmd.exe
+  - CommonProgramFiles=C:\Program Files\Common Files
+  - CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+  - CommonProgramW6432=C:\Program Files\Common Files
+  - DriverData=C:\Windows\System32\Drivers\DriverData
+  - ERROR_CODE=0
+  - FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+  - FPS_BROWSER_USER_PROFILE_STRING=Default
+  - HOMEDRIVE=C:
+  - HOMEPATH=\Users\texch
+  - JAVA_EXEC="C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin\..\jre\bin\java.exe"
+  - JAVA_HOME=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin\..\jre
+  - LOCALAPPDATA=C:\Users\texch\AppData\Local
+  - LOGONSERVER=\\LAPTOP-CARLOSCC
+  - MOZ_DISABLE_CONTENT_SANDBOX=1
+  - NUMBER_OF_PROCESSORS=4
+  - OS=Windows_NT
+  - OneDrive=C:\Users\texch\OneDrive
+  - PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
+  - PROCESSOR_ARCHITECTURE=AMD64
+  - PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
+  - PROCESSOR_LEVEL=6
+  - PROCESSOR_REVISION=8e09
+  - PROJECT_HOME=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco
+  - PROMPT=$P$G
+  - PSModulePath=C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+  - PUBLIC=C:\Users\Public
+  - Path=C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Users\texch\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\texch\AppData\Local\Programs\Python\Python37-32\;C:\Users\texch\AppData\Local\Microsoft\WindowsApps;
+  - ProgramData=C:\ProgramData
+  - ProgramFiles=C:\Program Files
+  - ProgramFiles(x86)=C:\Program Files (x86)
+  - ProgramW6432=C:\Program Files
+  - SESSIONNAME=Console
+  - SONAR_SCANNER_HOME=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin\..
+  - SystemDrive=C:
+  - SystemRoot=C:\WINDOWS
+  - TEMP=C:\Users\texch\AppData\Local\Temp
+  - TMP=C:\Users\texch\AppData\Local\Temp
+  - USERDOMAIN=LAPTOP-CARLOSCC
+  - USERDOMAIN_ROAMINGPROFILE=LAPTOP-CARLOSCC
+  - USERNAME=texch
+  - USERPROFILE=C:\Users\texch
+  - scriptdir=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin
+  - use_embedded_jre=true
+  - windir=C:\WINDOWS
+System properties:
+  - awt.toolkit=sun.awt.windows.WToolkit
+  - file.encoding=Cp1252
+  - file.encoding.pkg=sun.io
+  - file.separator=\
+  - java.awt.graphicsenv=sun.awt.Win32GraphicsEnvironment
+  - java.awt.headless=true
+  - java.awt.printerjob=sun.awt.windows.WPrinterJob
+  - java.class.path=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin\..\lib\sonar-scanner-cli-3.2.0.1227.jar
+  - java.class.version=52.0
+  - java.endorsed.dirs=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\endorsed
+  - java.ext.dirs=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext
+  - java.home=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre
+  - java.io.tmpdir=C:\Users\texch\AppData\Local\Temp\
+  - java.library.path=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.8.0_181\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\System32\OpenSSH\;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Users\texch\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\texch\AppData\Local\Programs\Python\Python37-32\;C:\Users\texch\AppData\Local\Microsoft\WindowsApps;;.
+  - java.runtime.name=Java(TM) SE Runtime Environment
+  - java.runtime.version=1.8.0_121-b13
+  - java.specification.name=Java Platform API Specification
+  - java.specification.vendor=Oracle Corporation
+  - java.specification.version=1.8
+  - java.vendor=Oracle Corporation
+  - java.vendor.url=http://java.oracle.com/
+  - java.vendor.url.bug=http://bugreport.sun.com/bugreport/
+  - java.version=1.8.0_121
+  - java.vm.info=mixed mode
+  - java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+  - java.vm.specification.name=Java Virtual Machine Specification
+  - java.vm.specification.vendor=Oracle Corporation
+  - java.vm.specification.version=1.8
+  - java.vm.vendor=Oracle Corporation
+  - java.vm.version=25.121-b13
+  - line.separator=
+
+  - os.arch=amd64
+  - os.name=Windows 10
+  - os.version=10.0
+  - path.separator=;
+  - project.home=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco
+  - scanner.home=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\bin\..
+  - sun.arch.data.model=64
+  - sun.boot.class.path=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\resources.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\rt.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\sunrsasign.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\jsse.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\jce.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\charsets.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\lib\jfr.jar;C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\classes
+  - sun.boot.library.path=C:\Users\texch\Desktop\sonar-scanner-3.2.0.1227-windows\jre\bin
+  - sun.cpu.endian=little
+  - sun.cpu.isalist=amd64
+  - sun.desktop=windows
+  - sun.io.unicode.encoding=UnicodeLittle
+  - sun.java.command=org.sonarsource.scanner.cli.Main -X
+  - sun.java.launcher=SUN_STANDARD
+  - sun.jnu.encoding=Cp1252
+  - sun.management.compiler=HotSpot 64-Bit Tiered Compilers
+  - sun.os.patch.level=
+  - sun.stderr.encoding=cp850
+  - sun.stdout.encoding=cp850
+  - user.country=MX
+  - user.dir=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco
+  - user.home=C:\Users\texch
+  - user.language=es
+  - user.name=texch
+  - user.script=
+  - user.timezone=America/Mexico_City
+  - user.variant=
+SonarQube plugins:
+  - SonarPython 1.10.0.2131 (python)
+  - SonarCSS 1.0.1.508 (cssfamily)
+  - SonarGo 1.1.0.1612 (go)
+  - SonarKotlin 1.0.1.965 (kotlin)
+  - Svn 1.8.0.1168 (scmsvn)
+  - SonarJS 4.2.0.6476 (javascript)
+  - SonarC# 7.3.2.6129 (csharp)
+  - SonarJava 5.6.1.15064 (java)
+  - LDAP 2.2.0.608 (ldap)
+  - Git 1.4.1.1128 (scmgit)
+  - SonarFlex 2.4.0.1222 (flex)
+  - SonarXML 1.5.1.1452 (xml)
+  - SonarPHP 2.14.0.3569 (php)
+  - SonarTS 1.7.0.2893 (typescript)
+Global properties:
+  - sonar.core.id=BF41A1F2-AWZEmhmsVMCnek-ZWrik
+  - sonar.core.startTime=2018-12-09T20:42:26-0600
+Settings for module: Sacco
+  - sonar.host.url=http://localhost:9000
+  - sonar.java.binaries=.\build\classes
+  - sonar.projectBaseDir=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco
+  - sonar.projectKey=Sacco
+  - sonar.projectName=SaccoProyect
+  - sonar.projectVersion=1.0
+  - sonar.scanner.app=ScannerCli
+  - sonar.scanner.appVersion=3.2.0.1227
+  - sonar.sourceEncoding=windows-1252
+  - sonar.sources=.\src
+  - sonar.verbose=true
+  - sonar.working.directory=C:\Users\texch\Desktop\5to Semestre\Principios de Diseño\ProyectoDICONS\ProyectoDICONS\Construccion\Sacco\.scannerwork

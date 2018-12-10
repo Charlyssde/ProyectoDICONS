@@ -9,7 +9,7 @@ package model;
  *
  * @author texch
  */
-public class Area {
+public class Area{
 
   private Integer idUbicacion;
 

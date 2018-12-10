@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller.popups;
 
 import java.net.URL;
@@ -13,18 +14,17 @@ import java.util.logging.Logger;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import model.Area;
-import model.DAO.AreaDAO;
-import model.DAO.HardwareDAO;
+import dao.AreaDAO;
+import dao.HardwareDAO;
 import model.Hardware;
+import model.Mensaje;
 
 /**
  * FXML Controller class
@@ -81,9 +81,9 @@ public class EditarHardwareController implements Initializable {
       HardwareDAO.editarHardware(here);
       Stage stage = (Stage) anchorPane.getScene().getWindow();
       stage.close();
-      mensaje("Actualizacion exitosa");
+      Mensaje.mostrarMensaje("Actualizacion exitosa");
     } else {
-      mensaje("No se deben dejar campos vacios");
+      Mensaje.mostrarMensaje("No se deben dejar campos vacios");
     }
   }
 
@@ -109,21 +109,9 @@ public class EditarHardwareController implements Initializable {
   }
 
   private boolean camposVacios() {
-    if (txtMarca.getText().equals("") || txtModelo.getText().equals("")
+    return (txtMarca.getText().equals("") || txtModelo.getText().equals("")
         || txtNumSerie.getText().equals("") || chbTipo.getValue().isEmpty()
-        || chbEdificio.getValue().isEmpty()) {
-      return true;
-    }
-    return false;
-  }
-
-  private void mensaje(String mensaje) {
-    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-    dialogo.setTitle("Aviso");
-    dialogo.setHeaderText(null);
-    dialogo.setContentText(mensaje);
-    dialogo.initStyle(StageStyle.UTILITY);
-    dialogo.showAndWait();
+        || chbEdificio.getValue().isEmpty());
   }
 
   private void cargarAreas() throws SQLException {

@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller.popups;
 
 import java.net.URL;
@@ -10,15 +11,14 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import model.DAO.SoftwareDAO;
+import dao.SoftwareDAO;
+import model.Mensaje;
 import model.Software;
 
 /**
@@ -48,7 +48,7 @@ public class EditarSoftwareController implements Initializable {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
+    // Nothing
   }
 
   @FXML
@@ -58,11 +58,11 @@ public class EditarSoftwareController implements Initializable {
           software.getNumLicencias(), software.getFechaAdquisicion(), txtVersion.getText(),
           txtObservaciones.getText());
       guardarEnBd(here);
-      mensaje("Software actualizado con exito");
+      Mensaje.mostrarMensaje("Software actualizado con exito");
       Stage stage = (Stage) anchorPane.getScene().getWindow();
       stage.close();
     } else {
-      mensaje("Ningun campo puede quedar vacio");
+      Mensaje.mostrarMensaje("Ningun campo puede quedar vacio");
     }
   }
 
@@ -80,25 +80,12 @@ public class EditarSoftwareController implements Initializable {
   }
 
   public boolean camposVacios() {
-    if (txtObservaciones.getText().isEmpty() || txtSoftware.getText().isEmpty()
-        || txtVersion.getText().isEmpty()) {
-      return true;
-    }
-
-    return false;
+    return (txtObservaciones.getText().isEmpty() || txtSoftware.getText().isEmpty()
+        || txtVersion.getText().isEmpty());
   }
 
   public void guardarEnBd(Software nuevo) throws SQLException {
     SoftwareDAO.editarSoftware(nuevo);
-  }
-
-  private void mensaje(String mensaje) {
-    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-    dialogo.setTitle("Aviso");
-    dialogo.setHeaderText(null);
-    dialogo.setContentText(mensaje);
-    dialogo.initStyle(StageStyle.UTILITY);
-    dialogo.showAndWait();
   }
 
 }

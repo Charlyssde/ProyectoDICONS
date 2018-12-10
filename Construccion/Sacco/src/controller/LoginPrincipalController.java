@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller;
 
 import java.io.IOException;
@@ -27,13 +28,12 @@ import javafx.stage.Stage;
  */
 public class LoginPrincipalController implements Initializable {
 
-  private Label lbl_Sacco;
   @FXML
-  private Label lbl_Uv;
+  private Label lblUv;
   @FXML
-  private Label lbl_fei;
+  private Label lblfei;
   @FXML
-  private Label lb_Sacco;
+  private Label lbSacco;
   @FXML
   private AnchorPane anchorPane;
   @FXML
@@ -48,7 +48,7 @@ public class LoginPrincipalController implements Initializable {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-
+    //Nothing
   }
 
   @FXML
@@ -60,7 +60,6 @@ public class LoginPrincipalController implements Initializable {
     } catch (IOException ex) {
       Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
     }
-    //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane loginTa = loader.getRoot();
     Scene newScene = new Scene(loginTa);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();
@@ -78,7 +77,6 @@ public class LoginPrincipalController implements Initializable {
     } catch (IOException ex) {
       Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
     }
-    //LoginJefeCCController display = loader.getController();//Utilizar a menos que se haga una accion dentro de la clase que viene
     AnchorPane loginJefeCc = loader.getRoot();
     Scene newScene = new Scene(loginJefeCc);
     Stage curStage = (Stage) anchorPane.getScene().getWindow();

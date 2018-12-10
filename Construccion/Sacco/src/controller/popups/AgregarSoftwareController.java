@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller.popups;
 
 import java.net.URL;
@@ -13,7 +14,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
@@ -21,8 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import model.DAO.SoftwareDAO;
+import dao.SoftwareDAO;
+import model.Mensaje;
 import model.Software;
 
 /**
@@ -49,16 +49,14 @@ public class AgregarSoftwareController implements Initializable {
   @FXML
   private TextField txtNumLicencias;
 
-  private Software software;
-
-  private final String patron = "[\\d]";
+  private static final String PATRON = "[\\d]";
 
   /**
    * Initializes the controller class.
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-
+    //Nothing
   }
 
   @FXML
@@ -76,51 +74,35 @@ public class AgregarSoftwareController implements Initializable {
 
       Date today = new Date(2018, 01, 01);
       if (adq.before(today)) {
-        mensaje("No puedes elegir una fecha anterior al 01/01/2018");
+        Mensaje.mostrarMensaje("No puedes elegir una fecha anterior al 01/01/2018");
       } else if (esNumero()) {
-        software = new Software(null, txtSoftware.getText(),
+        Software software = new Software(null, txtSoftware.getText(),
             Integer.parseInt(txtNumLicencias.getText()), adq, txtObservaciones.getText(),
             txtVersion.getText());
         guardarEnBd(software);
-        mensaje("Software guardado con exito");
+        Mensaje.mostrarMensaje("Software guardado con exito");
         Stage stage = (Stage) anchorPane.getScene().getWindow();
         stage.close();
       } else {
-        mensaje("El numero de licencias debe ser un numero");
+        Mensaje.mostrarMensaje("El numero de licencias debe ser un numero");
       }
     } else {
-      mensaje("No pueden quedar campos vacios");
+      Mensaje.mostrarMensaje("No pueden quedar campos vacios");
     }
   }
 
   private boolean camposVacios() {
-    if (txtSoftware.getText().isEmpty() || txtVersion.getText().isEmpty()
-        || txtObservaciones.getText().isEmpty() || txtNumLicencias.getText().isEmpty()) {
-      return true;
-    }
-
-    return false;
-  }
-
-  private void mensaje(String mensaje) {
-    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-    dialogo.setTitle("Aviso");
-    dialogo.setHeaderText(null);
-    dialogo.setContentText(mensaje);
-    dialogo.initStyle(StageStyle.UTILITY);
-    dialogo.showAndWait();
+    return (txtSoftware.getText().isEmpty() || txtVersion.getText().isEmpty()
+        || txtObservaciones.getText().isEmpty() || txtNumLicencias.getText().isEmpty());
   }
 
   private boolean esNumero() {
-    Pattern pattern = Pattern.compile(patron);
+    Pattern pattern = Pattern.compile(PATRON);
     Matcher matcher = pattern.matcher(txtNumLicencias.getText());
-    if (matcher.find()) {
-      return true;
-    }
-    return false;
+    return (matcher.find());
   }
 
-  private void guardarEnBd(Software software) throws SQLException {
+  private void guardarEnBd(Software software) {
     SoftwareDAO.agregarSoftware(software);
   }
 

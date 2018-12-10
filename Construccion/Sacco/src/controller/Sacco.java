@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,14 +16,16 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * Clase encargada de lanzar la aplicacion
  *
  * @author texch
+ * @since 2018/05/11
  */
 public class Sacco extends Application {
-    
-    @Override
-    public void start(Stage stage) {
- try {
+
+  @Override
+  public void start(Stage stage) {
+    try {
       Parent sc = FXMLLoader.load(getClass().getResource("/view/LoginPrincipal.fxml"));
       Scene nu = new Scene(sc);
       stage.setTitle("LogIn SACCO");
@@ -28,15 +33,16 @@ public class Sacco extends Application {
       stage.setScene(nu);
       stage.show();
     } catch (IOException e) {
-      e.printStackTrace();
+      Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, e);
     }
-    }
+  }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
-    
+  /**
+   *  metodo main
+   * @param args the command line arguments
+   */
+  public static void main(String[] args) {
+    launch(args);
+  }
+
 }

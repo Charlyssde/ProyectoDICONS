@@ -23,6 +23,7 @@ public class TecnicoAcademico {
 
   private String correoInstitucional;
 
+  
   public TecnicoAcademico(String numPersonal, String nombre, String password, String telefono, String extension, String correoInstitucional) {
     this.numPersonal = numPersonal;
     this.nombre = nombre;

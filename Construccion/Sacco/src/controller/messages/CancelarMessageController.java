@@ -10,17 +10,16 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import model.DAO.HardwareDAO;
-import model.DAO.ResponsableDAO;
-import model.DAO.SoftwareDAO;
-import model.DAO.TecnicoAcademicoDAO;
+import dao.HardwareDAO;
+import dao.ResponsableDAO;
+import dao.SoftwareDAO;
+import dao.TecnicoAcademicoDAO;
 import model.Hardware;
+import model.Mensaje;
 import model.Responsable;
 import model.Software;
 import model.TecnicoAcademico;
@@ -48,7 +47,7 @@ public class CancelarMessageController implements Initializable {
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {
-    // TODO
+    // Nothing
   }
 
   @FXML
@@ -68,8 +67,9 @@ public class CancelarMessageController implements Initializable {
         break;
       default:
         break;
+
     }
-    mensaje("Eliminacion realizada exitosamente");
+    Mensaje.mostrarMensaje("Eliminacion realizada exitosamente");
     Stage stage = (Stage) anchorPane.getScene().getWindow();
     stage.close();
   }
@@ -80,30 +80,28 @@ public class CancelarMessageController implements Initializable {
     stage.close();
   }
 
-  public void cargarObjeto(Object objeto) throws SQLException {
-    System.out.println(objeto.getClass().toString());
-    if (objeto.getClass().toString().equals("class model.Hardware")) {
-      eliminar = (Hardware) objeto;
-    } else if (objeto.getClass().toString().equals("class model.Software")) {
-      eliminar = (Software) objeto;
-    }else if(objeto.getClass().toString().equals("class model.TecnicoAcademico")){
-      eliminar = (TecnicoAcademico) objeto;
-    }else if(objeto.getClass().toString().equals("class model.Software")){
-      eliminar = (Responsable) objeto;
+  public void cargarObjeto(Object objeto) {
+    switch (objeto.getClass().toString()) {
+      case "class model.Hardware":
+        eliminar = objeto;
+        break;
+      case "class model.Software":
+        eliminar = objeto;
+        break;
+      case "class model.TecnicoAcademico":
+        eliminar = objeto;
+        break;
+      case "class model.Responsable":
+        eliminar = objeto;
+        break;
+      default:
+        break;
+
     }
   }
 
   public void vieneDe(String origen) {
     this.origen = origen;
-  }
-
-  public void mensaje(String mensaje) {
-    Alert dialogo = new Alert(Alert.AlertType.INFORMATION);
-    dialogo.setTitle("Aviso");
-    dialogo.setHeaderText(null);
-    dialogo.setContentText(mensaje);
-    dialogo.initStyle(StageStyle.UTILITY);
-    dialogo.showAndWait();
   }
 
 }

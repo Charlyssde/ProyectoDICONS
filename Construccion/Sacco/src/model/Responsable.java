@@ -28,6 +28,10 @@ public class Responsable {
     this.extension = extension;
     this.correo = correo;
   }
+  
+  public Responsable(){
+    
+  }
 
 /**
  * 
