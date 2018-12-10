@@ -14,7 +14,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
+ * Pruebas de unidad de la clase Area
+ * 
  * @author texch
  */
 public class AreaTest {
@@ -44,12 +45,9 @@ public class AreaTest {
    */
   @Test
   public void testGetIdUbicacion() {
-    System.out.println("getIdUbicacion");
-    
+    System.out.println("Probando getIdUbicacion");
     Integer expResult = 1;
     Assert.assertEquals(expResult, area.getIdUbicacion());
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -57,20 +55,10 @@ public class AreaTest {
    */
   @Test
   public void testGetEdificio() {
-    System.out.println("getEdificio");
-   
+    System.out.println("Probando getEdificio");
     String expResult = "Econex";
     String result = area.getEdificio();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-
-
-
-
-
-
-
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -78,13 +66,10 @@ public class AreaTest {
    */
   @Test
   public void testGetUso() {
-    System.out.println("getUso");
-   
+    System.out.println("Probando getUso");
     String expResult = "aula";
     String result = area.getUso();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
 
   /**
@@ -92,13 +77,10 @@ public class AreaTest {
    */
   @Test
   public void testToString() {
-    System.out.println("toString");
-    
+    System.out.println("Probando toString");
     String expResult = "Econex - aula";
     String result = area.toString();
     assertEquals(expResult, result);
-    // TODO review the generated test code and remove the default call to fail.
-    fail("The test case is a prototype.");
   }
   
 }
