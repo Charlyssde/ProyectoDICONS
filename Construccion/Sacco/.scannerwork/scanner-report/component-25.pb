@@ -1,1 +1,0 @@
-3src/controller/popups/EditarSoftwareController.java 2javaX\hr3src/controller/popups/EditarSoftwareController.java

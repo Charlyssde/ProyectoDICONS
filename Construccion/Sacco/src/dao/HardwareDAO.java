@@ -90,15 +90,7 @@ public class HardwareDAO {
         PreparedStatement st
         = conexion.prepareStatement("select * from hardware where marca = ?");) {
       st.setString(1, criterio);
-      try (ResultSet resultadoQuery = st.executeQuery();) {
-        while (resultadoQuery.next()) {
-          cargarDatosHardware(conexion, resultadoQuery);
-          hardwares.add(hw);
-        }
-      } catch (SQLException ex) {
-        Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE, null, ex);
-      }
-
+      ejecutarQuery(conexion, st);
     } catch (SQLException ex) {
       Logger.getLogger(HardwareDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -119,15 +111,7 @@ public class HardwareDAO {
         PreparedStatement st
         = conexion.prepareStatement("select * from hardware where estado = ?");) {
       st.setString(1, criterio);
-      try (ResultSet resultadoQuery = st.executeQuery();) {
-        while (resultadoQuery.next()) {
-          cargarDatosHardware(conexion, resultadoQuery);
-          hardwares.add(hw);
-        }
-      } catch (SQLException ex) {
-        Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE, null, ex);
-      }
-
+      ejecutarQuery(conexion, st);
     } catch (SQLException ex) {
       Logger.getLogger(HardwareDAO.class.getName()).log(Level.SEVERE, null, ex);
     }
@@ -248,6 +232,17 @@ public class HardwareDAO {
           Integer area = resultadoQuery.getInt("idubicacion");
           hw = new Hardware(numInv, marca, modelo, numSerie, estado, tipo);
           cargarAreas(conexion, area);
+  }
+  
+  private static void ejecutarQuery(Connection conexion, PreparedStatement st){
+    try (ResultSet resultadoQuery = st.executeQuery();) {
+        while (resultadoQuery.next()) {
+          cargarDatosHardware(conexion, resultadoQuery);
+          hardwares.add(hw);
+        }
+      } catch (SQLException ex) {
+        Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE, null, ex);
+      }
   }
 
 }

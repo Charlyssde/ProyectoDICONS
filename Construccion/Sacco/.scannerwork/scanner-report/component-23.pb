@@ -1,1 +1,0 @@
-2src/controller/popups/EditarTecnicoController.java 2javaXyhr2src/controller/popups/EditarTecnicoController.java

@@ -19,29 +19,25 @@ import java.util.logging.Logger;
 public class ConnectionToDb {
 
   private ConnectionToDb() {
-    
-  }
-    
-  
-    
-  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-	static final String DB_URL = "jdbc:mysql://";
-	
 
-	public static Connection conectar(String usuario, String pass, String bd, String host) {
-	    Connection res = null;
-	    try {
-	      // Registrar JDBC driver
-	      Class.forName(JDBC_DRIVER);
-	      String url = DB_URL + host + '/' + bd;
-	      res = DriverManager.getConnection(url, usuario, pass);
-	    } catch (SQLException sqe) {
-	      sqe.printStackTrace();
-	    } catch (ClassNotFoundException e) {
-	      Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, e);
-	    }
-	    return res;
-	  }
-	
-    
+  }
+
+  static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
+  static final String DB_URL = "jdbc:mysql://";
+
+  public static Connection conectar(String usuario, String pass, String bd, String host) {
+    Connection res = null;
+    try {
+      // Registrar JDBC driver
+      Class.forName(JDBC_DRIVER);
+      String url = DB_URL + host + '/' + bd;
+      res = DriverManager.getConnection(url, usuario, pass);
+    } catch (SQLException sqe) {
+      //
+    } catch (ClassNotFoundException e) {
+      Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, e);
+    }
+    return res;
+  }
+
 }

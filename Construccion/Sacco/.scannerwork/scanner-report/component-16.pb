@@ -1,1 +1,0 @@
-src/controller/messages :rsrc\controller\messages

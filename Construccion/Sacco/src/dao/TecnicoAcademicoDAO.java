@@ -136,30 +136,11 @@ public class TecnicoAcademicoDAO {
   public static List<TecnicoAcademico> obtenerTecnicoAcademicoNombre(String criterio) {
     ObservableList<TecnicoAcademico> tecnicos
         = FXCollections.observableArrayList();
-    TecnicoAcademico ta;
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
         PreparedStatement st = conexion.prepareStatement("select * from tecnicoacademico"
             + " where nombre = ?");) {
       st.setString(1, criterio);
-
-      try (ResultSet resultadoQuery = st.executeQuery();) {
-        while (resultadoQuery.next()) {
-          String numP = resultadoQuery.getString(NUMPERSONAL);
-          String nom = (resultadoQuery.getString(NOMBRE));
-          String pass = (resultadoQuery.getString(PASSW));
-          String telefono = resultadoQuery.getString(TELEFONO);
-          String extension = resultadoQuery.getString(EXTENSION);
-          String correo = resultadoQuery.getString(CORREO);
-
-          ta = new TecnicoAcademico(numP, nom, pass, telefono,
-              extension, correo);
-          tecnicos.add(ta);
-        }
-      } catch (SQLException ex) {
-        Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE,
-            null, ex);
-      }
-
+      cargarQuery(st, tecnicos);
     } catch (SQLException ex) {
       Logger.getLogger(TecnicoAcademicoDAO.class.getName()).log(Level.SEVERE,
           null, ex);
@@ -210,6 +191,24 @@ public class TecnicoAcademicoDAO {
       }
     } catch (SQLException ex) {
       Logger.getLogger(TecnicoAcademicoDAO.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private static void cargarQuery(PreparedStatement st,ObservableList tecnicos){
+    try (ResultSet resultadoQuery = st.executeQuery();) {
+      while (resultadoQuery.next()) {
+        String numP = resultadoQuery.getString(NUMPERSONAL);
+        String nom = (resultadoQuery.getString(NOMBRE));
+        String pass = (resultadoQuery.getString(PASSW));
+        String telefono = resultadoQuery.getString(TELEFONO);
+        String extension = resultadoQuery.getString(EXTENSION);
+        String correo = resultadoQuery.getString(CORREO);
+        TecnicoAcademico ta = new TecnicoAcademico(numP, nom, pass, telefono,extension, correo);
+        tecnicos.add(ta);
+      }
+    } catch (SQLException ex) {
+      Logger.getLogger(JefeCentroComputoDAO.class.getName()).log(Level.SEVERE,
+          null, ex);
     }
   }
 }

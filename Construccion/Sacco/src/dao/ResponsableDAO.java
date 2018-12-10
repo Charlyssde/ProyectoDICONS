@@ -41,12 +41,12 @@ public class ResponsableDAO {
   public static List<Responsable> obtenerAllResponsable() {
     ObservableList<Responsable> responsables
         = FXCollections.observableArrayList();
-    Responsable re = null;
+    Responsable re;
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
         Statement st = conexion.createStatement();
         ResultSet resultadoQuery = st.executeQuery("select * from responsable");) {
       while (resultadoQuery.next()) {
-        re = cargarDatosResponsable(resultadoQuery, re);
+        re = cargarDatosResponsable(resultadoQuery);
         responsables.add(re);
       }
     } catch (SQLException ex) {
@@ -72,10 +72,9 @@ public class ResponsableDAO {
         PreparedStatement st = conexion.prepareStatement("select * from responsable"
             + " where nombre = ?");) {
       st.setString(1, name);
-
       try (ResultSet resultadoQuery = st.executeQuery();) {
         while (resultadoQuery.next()) {
-          re = cargarDatosResponsable(resultadoQuery, re);
+          re = cargarDatosResponsable(resultadoQuery);
           responsables.add(re);
         }
       }
@@ -103,7 +102,7 @@ public class ResponsableDAO {
       try (ResultSet resultadoQuery = st.executeQuery();) {
 
         while (resultadoQuery.next()) {
-          re = cargarDatosResponsable(resultadoQuery, re);
+          re = cargarDatosResponsable(resultadoQuery);
         }
       }
 
@@ -174,13 +173,12 @@ public class ResponsableDAO {
     }
   }
   
-  private static Responsable cargarDatosResponsable(ResultSet resultadoQuery, Responsable re) throws SQLException {
+  private static Responsable cargarDatosResponsable(ResultSet resultadoQuery) throws SQLException {
     String numPersonal = resultadoQuery.getString("numPersonal");
         String nombre = (resultadoQuery.getString("nombre"));
         String telefono = (resultadoQuery.getString("telefono"));
         String extension = (resultadoQuery.getString("extension"));
         String correo = (resultadoQuery.getString("correo"));
-        re = new Responsable(numPersonal, nombre, telefono, extension, correo);
-        return re;
+        return new Responsable(numPersonal, nombre, telefono, extension, correo);
   }
 }
