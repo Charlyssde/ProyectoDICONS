@@ -31,7 +31,7 @@ public class DictamenDAO {
   /**
    * Se guarda un nuevo objeto de tipo Dictamen en la base de datos.
    *
-   * @param dictamen
+   * @param dictamen el dictamen a guardar
    */
   public static void guardarDictamen(Dictamen dictamen) {
     try {

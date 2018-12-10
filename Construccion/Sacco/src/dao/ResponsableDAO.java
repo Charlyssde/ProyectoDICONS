@@ -36,7 +36,7 @@ public class ResponsableDAO {
    * Se obtienen todos los objetos de tipo Responsable que estan registrados en
    * la base de datos.
    *
-   * @return
+   * @return responsables la lista de responsables.
    */
   public static List<Responsable> obtenerAllResponsable() {
     ObservableList<Responsable> responsables
@@ -60,9 +60,8 @@ public class ResponsableDAO {
    * Se obtienen objetos de tipo Responsable mediante el nombre, que estan
    * registrados en la base de datos.
    *
-   * @param name
-   * @return
-   * @throws SQLException
+   * @param name nombre que se desea encontrar en la bd.
+   * @return responsables la lista de responsables que coinciden con el name.
    */
   public static List<Responsable> obtenerResponsableNombre(String name) {
     ObservableList<Responsable> responsables
@@ -89,8 +88,8 @@ public class ResponsableDAO {
    * Obtiene un objeto de tipo Responsable registrado en la base de datos
    * mediante su numPersonal.
    *
-   * @param numPersonal
-   * @return
+   * @param numPersonal el numero con el que se desea encontrar el responsable.
+   * @return re responsable que coincide con el numPersonal.
    */
   public static Responsable obtenerResponsableNumPersonal(String numPersonal) {
     Responsable re = null;
@@ -115,8 +114,7 @@ public class ResponsableDAO {
   /**
    * Se agrega un nuevo objeto de tipo Responsable a la base de datos.
    *
-   * @param responsable
-   * @throws SQLException
+   * @param responsable el nuevo responsable a agregar a la base de datos.
    */
   public static void agregarResponsable(Responsable responsable) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -137,8 +135,7 @@ public class ResponsableDAO {
    * Se edita un objeto de tipo Responsable que esté registrado en la base de
    * datos.
    *
-   * @param responsable
-   * @throws SQLException
+   * @param responsable el responsable con los nuevos datos para guardar.
    */
   public static void editarResponsable(Responsable responsable) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -159,8 +156,7 @@ public class ResponsableDAO {
   /**
    * Se elimina un objeto de tipo Responsable de la base de datos.
    *
-   * @param responsable
-   * @throws SQLException
+   * @param responsable el responsable para eliminar.
    */
   public static void eliminarResponsable(Responsable responsable) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);

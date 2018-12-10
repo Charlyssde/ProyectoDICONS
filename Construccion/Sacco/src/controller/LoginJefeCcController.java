@@ -51,6 +51,8 @@ public class LoginJefeCcController implements Initializable {
 
   /**
    * Initializes the controller class.
+   * @param url url
+   * @param rb rb
    */
   @Override
   public void initialize(URL url, ResourceBundle rb) {

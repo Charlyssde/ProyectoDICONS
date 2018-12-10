@@ -33,9 +33,8 @@ public class AreaDAO {
    * Se obtiene la ubicacion mediante un parametro dado por el usuario de tipo
    * entero.
    *
-   * @param id
+   * @param id el identificador de la ubicacion
    * @return
-   * @throws SQLException
    */
   public static Area obtenerUbicacion(int id) {
     Area area = null;
@@ -64,7 +63,7 @@ public class AreaDAO {
   /**
    * Se obtienen todas las areas registradas en la base de datos.
    *
-   * @return
+   * @return listArea lista con todas las areas que hay en la bd
    */
   public static List<Area> obtenerAllAreas() {
     ObservableList<Area> listArea = FXCollections.observableArrayList();

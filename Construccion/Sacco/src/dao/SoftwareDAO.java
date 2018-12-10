@@ -37,8 +37,7 @@ public class SoftwareDAO {
    * Se obtienen todos los objetos de tipo Software registrados en la base de 
    * datos.
    * 
-   * @return
-   * @throws SQLException 
+   * @return softwares la lista de los software. 
    */
   public static List<Software> obtenerAllSoftware() {
     ObservableList<Software> softwares = FXCollections.observableArrayList();
@@ -66,9 +65,8 @@ public class SoftwareDAO {
    * Se obtienen todos los objetos de tipo Software que cumplan con el criterio
    * ingresado por el usuario.
    * 
-   * @param criterio
-   * @return
-   * @throws SQLException 
+   * @param criterio el nombre que se desea encontrar el software.
+   * @return lista la lista de los software que coinciden con el criterio. 
    */
   public static List<Software> obtenerSoftwareNombre(String criterio) {
     ObservableList<Software> lista = FXCollections.observableArrayList();
@@ -98,8 +96,7 @@ public class SoftwareDAO {
    * Se edita un objeto de tipo software que esté registrado en la base de 
    * datos.
    * 
-   * @param nuevo
-   * @throws SQLException 
+   * @param nuevo el objeto con los nuevos datos del software. 
    */
   public static void editarSoftware(Software nuevo) {
     try (
@@ -120,8 +117,7 @@ public class SoftwareDAO {
 
   /**
    * Se agrega un nuevo objeto de tipo Software a la base de datos.
-   * @param nuevo
-   * @throws SQLException 
+   * @param nuevo el objeto con los datos para agregar. 
    */
   public static void agregarSoftware(Software nuevo) {
 
@@ -143,8 +139,7 @@ public class SoftwareDAO {
 
   /**
    * Se elimina un objeto de tipo software de la base de datos.
-   * @param seleccionado
-   * @throws SQLException 
+   * @param seleccionado el elemento que se desea eliminar. 
    */
   public static void eliminarSoftware(Software seleccionado) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);

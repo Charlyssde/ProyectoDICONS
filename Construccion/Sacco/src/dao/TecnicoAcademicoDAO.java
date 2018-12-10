@@ -44,13 +44,12 @@ public class TecnicoAcademicoDAO {
    * Se obtiene un objeto de tipo TecnicoAcademico mediante los criterios
    * ingresados por el usuario.
    *
-   * @param ta
-   * @return
-   * @throws SQLException
+   * @param ta los datos con lo que se desea ingresar al sistema.
+   * @return academico el objeto con los datos de ta.
    */
   public static TecnicoAcademico obtenerTecnico(TecnicoAcademico ta) {
     TecnicoAcademico academico = null;
-    Connection conexion = null;
+    Connection conexion;
 
     try {
       conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -80,7 +79,7 @@ public class TecnicoAcademicoDAO {
   /**
    * Se guarda un objeto de tipo TecnicoAcademico dentro de la base de datos.
    *
-   * @param tecnico
+   * @param tecnico el tecnico a guardar.
    */
   public static void guardarTecnico(TecnicoAcademico tecnico) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -102,7 +101,7 @@ public class TecnicoAcademicoDAO {
   /**
    * Se obtienen todos los objetos de tipo TecnicoAcademico de la base de datos.
    *
-   * @return
+   * @return academicos la lista con los academicos.
    */
   public static List<TecnicoAcademico> obtenerAllTecnicos() {
     ObservableList<TecnicoAcademico> academicos = FXCollections.observableArrayList();
@@ -131,7 +130,7 @@ public class TecnicoAcademicoDAO {
    * el criterio ingresado por el usuario (nombre).
    *
    * @param criterio
-   * @return
+   * @return tecnicos la lista con los tecnicos que cumplen el criterio.
    */
   public static List<TecnicoAcademico> obtenerTecnicoAcademicoNombre(String criterio) {
     ObservableList<TecnicoAcademico> tecnicos
@@ -152,7 +151,7 @@ public class TecnicoAcademicoDAO {
   /**
    * Se edita un objeto de tipo TecnicoAcademico que esté en la base de datos.
    *
-   * @param nuevo
+   * @param nuevo el onjeto con los nuevos datos a guardar.
    */
   public static void editarTecnicoAcademico(TecnicoAcademico nuevo) {
     try {
@@ -177,7 +176,7 @@ public class TecnicoAcademicoDAO {
   /**
    * Se elimina un objeto de tipo TecnicoAcademico de la base datos.
    *
-   * @param seleccionado
+   * @param seleccionado el elemento seleccionado de la tabla para eliminar.
    */
   public static void eliminarTecnicoAcademico(TecnicoAcademico seleccionado) {
     Connection conexion;

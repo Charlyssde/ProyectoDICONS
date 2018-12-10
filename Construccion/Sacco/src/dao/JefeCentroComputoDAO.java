@@ -34,10 +34,9 @@ public class JefeCentroComputoDAO {
    * en el sistema si sus criterios estan registrados en la base de datos.
    *
    * @param datos
-   * @return
-   * @throws SQLException
+   * @return jcc el objeto con los datos del jefe del centro de computo.
    */
-  public static JefeCentroComputo obtenerJefeCc(JefeCentroComputo datos) throws SQLException {
+  public static JefeCentroComputo obtenerJefeCc(JefeCentroComputo datos) {
     JefeCentroComputo jcc = null;
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
         PreparedStatement st = conexion.prepareStatement("select * from jefecentrocomputo where "

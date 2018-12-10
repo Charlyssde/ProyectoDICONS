@@ -39,7 +39,7 @@ public class HardwareDAO {
    * Se obtienen todos los registros de hardware que estan dentro de la base de
    * datos.
    *
-   * @return
+   * @return hardwares la lista de todos los hardwares.
    */
   public static List<Hardware> obtenerAllHardware() {
     hardwares = FXCollections.observableArrayList();
@@ -59,7 +59,7 @@ public class HardwareDAO {
   /**
    * Se agrega un nuevo objeto de tipo hardware en la base de datos.
    *
-   * @param hardware
+   * @param hardware el hardware a guardar
    */
   public static void agregarHardware(Hardware hardware) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -82,7 +82,7 @@ public class HardwareDAO {
    * esta registrada.
    *
    * @param criterio
-   * @return
+   * @return hardwares la lista de todos los hardwares que coinciden con el criterio.
    */
   public static List<Hardware> obtenerHardwareMarca(String criterio) {
     hardwares = FXCollections.observableArrayList();
@@ -102,8 +102,7 @@ public class HardwareDAO {
    * esta registrado con el.
    *
    * @param criterio
-   * @return
-   * @throws SQLException
+   * @return hardwares la lista de todos los hardwares.
    */
   public static List<Hardware> obtenerHardwareEstado(String criterio) {
     hardwares = FXCollections.observableArrayList();
@@ -122,7 +121,7 @@ public class HardwareDAO {
    * Se edita un objeto de tipo hardware que esté registrado dentro de la base
    * de datos(no se puede editar el numInventario).
    *
-   * @param nuevo
+   * @param nuevo el onjeto con los nuevos datos para editar.
    */
   public static void editarHardware(Hardware nuevo) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -145,7 +144,7 @@ public class HardwareDAO {
    * Se edita las propiedades de un objeto de tipo hardware que se encuentre en
    * mantenimiento.
    *
-   * @param nuevo
+   * @param nuevo el objeto solo con el estado cambiado.
    */
   public static void editarHardwareFromManten(Hardware nuevo) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
@@ -163,8 +162,8 @@ public class HardwareDAO {
    * Se obtiene un objeto de tipo hardware de acuerdo con el atributo
    * numInventario.
    *
-   * @param numero
-   * @return
+   * @param numero el numero de inventario del hardware.
+   * @return hardwares la lista de todos los hardwares que coinciden con el numero.
    * @throws SQLException
    */
   public static Hardware obtenerHardwareNumInv(Integer numero) throws SQLException {
@@ -188,7 +187,7 @@ public class HardwareDAO {
    * Se elimina un objeto de tipo hardware que se seleccionó en la GUI de la
    * base de datos.
    *
-   * @param seleccionado
+   * @param seleccionado el elemento seleccionado de la lista.
    */
   public static void eliminarHardware(Hardware seleccionado) {
     try (Connection conexion = ConnectionToDb.conectar(USUARIO, PASS, DB, HOST);
