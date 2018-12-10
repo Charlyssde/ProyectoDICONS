@@ -3,18 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model.databaseConection;
+package model.databaseconnection;
 
+import controller.LoginPrincipalController;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author texch
  */
 public class ConnectionToDb {
+
+  private ConnectionToDb() {
     
+  }
+    
+  
     
   static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://";
@@ -30,7 +38,7 @@ public class ConnectionToDb {
 	    } catch (SQLException sqe) {
 	      sqe.printStackTrace();
 	    } catch (ClassNotFoundException e) {
-	      e.printStackTrace();
+	      Logger.getLogger(LoginPrincipalController.class.getName()).log(Level.SEVERE, null, e);
 	    }
 	    return res;
 	  }
